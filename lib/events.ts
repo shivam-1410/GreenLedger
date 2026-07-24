@@ -2,11 +2,14 @@ import { sorobanServer } from './stellar';
 import { STELLAR_CONFIG } from './config';
 import { ContractEvent } from '@/types';
 
+// Deterministic timestamps for SSR hydration consistency
+const BASE_TIME = 1769280000000;
+
 export const INITIAL_EVENTS: ContractEvent[] = [
   {
     id: 'evt-1',
     type: 'retire',
-    timestamp: Date.now() - 1000 * 60 * 12,
+    timestamp: BASE_TIME - 1000 * 60 * 12,
     walletAddress: 'GDX7...P091',
     creditId: '1',
     projectName: 'Amazon Rainforest Protection & Restoration',
@@ -17,7 +20,7 @@ export const INITIAL_EVENTS: ContractEvent[] = [
   {
     id: 'evt-2',
     type: 'buy',
-    timestamp: Date.now() - 1000 * 60 * 35,
+    timestamp: BASE_TIME - 1000 * 60 * 35,
     walletAddress: 'GBC4...M822',
     creditId: '3',
     projectName: 'Indonesian Mangrove Blue Carbon Sink',
@@ -29,7 +32,7 @@ export const INITIAL_EVENTS: ContractEvent[] = [
   {
     id: 'evt-3',
     type: 'list',
-    timestamp: Date.now() - 1000 * 60 * 80,
+    timestamp: BASE_TIME - 1000 * 60 * 80,
     walletAddress: 'GBV2...R4E9',
     creditId: '4',
     projectName: 'Icelandic Geothermal Direct Air Capture',
@@ -41,7 +44,7 @@ export const INITIAL_EVENTS: ContractEvent[] = [
   {
     id: 'evt-4',
     type: 'mint',
-    timestamp: Date.now() - 1000 * 60 * 180,
+    timestamp: BASE_TIME - 1000 * 60 * 180,
     walletAddress: 'GDA7...L9P0',
     creditId: '2',
     projectName: 'Sahara Solar Infrastructure Initiative',

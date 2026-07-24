@@ -3,6 +3,8 @@ import { CarbonCredit, ContractEvent, PlatformStats, RetirementRecord, TrackedTr
 import { MOCK_PROJECTS } from '@/lib/config';
 import { INITIAL_EVENTS } from '@/lib/events';
 
+const BASE_TIME = 1769280000000;
+
 interface AppStoreState {
   projects: CarbonCredit[];
   events: ContractEvent[];
@@ -32,7 +34,7 @@ export const useAppStore = create<AppStoreState>((set, get) => ({
       owner: 'GBV2X...R4E91',
       amount: 250,
       reason: 'Corporate Annual Net-Zero Goal 2024 Offset',
-      timestamp: Date.now() - 1000 * 60 * 60 * 24 * 5,
+      timestamp: BASE_TIME - 1000 * 60 * 60 * 24 * 5,
       certificateHash: '0x8f1e920b7a8c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e',
     },
     {
@@ -42,7 +44,7 @@ export const useAppStore = create<AppStoreState>((set, get) => ({
       owner: 'GBV2X...R4E91',
       amount: 100,
       reason: 'Personal Flight & Commute Carbon Footprint Compensation',
-      timestamp: Date.now() - 1000 * 60 * 60 * 24 * 12,
+      timestamp: BASE_TIME - 1000 * 60 * 60 * 24 * 12,
       certificateHash: '0x4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f1e920b7a8c3d4e5f6a7b8c9d0e1f2a3b',
     },
   ],
