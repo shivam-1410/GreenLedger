@@ -29,7 +29,7 @@ export default function GovernancePage() {
   const [verifiers, setVerifiers] = useState<Verifier[]>(MOCK_VERIFIERS);
   const [newAddress, setNewAddress] = useState('GBK11223344556677889900AABBCCDDEEFFGGHHIIJJKKLLMM');
   const [newName, setNewName] = useState('Clean Development Mechanism (CDM)');
-  const [newUri, setNewUri] = useState('https://cdm.unfccc.int/accreditation');
+  const [newUri, setNewUri] = useState('https://cdm.unfccc.int');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Inter-Contract Query Simulator State
