@@ -27,7 +27,7 @@ export default function GovernancePage() {
   const { addTransaction, updateTransaction } = useAppStore();
 
   const [verifiers, setVerifiers] = useState<Verifier[]>(MOCK_VERIFIERS);
-  const [newAddress, setNewAddress] = useState('GBK11...T8Y55');
+  const [newAddress, setNewAddress] = useState('GBK11223344556677889900AABBCCDDEEFFGGHHIIJJKKLLMM');
   const [newName, setNewName] = useState('Clean Development Mechanism (CDM)');
   const [newUri, setNewUri] = useState('https://cdm.unfccc.int/accreditation');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -95,10 +95,15 @@ export default function GovernancePage() {
     }
 
     setIsChecking(true);
-    await new Promise((r) => setTimeout(r, 1200));
+    await new Promise((r) => setTimeout(r, 1000));
 
+    const cleanInput = checkAddress.trim().toLowerCase();
     const found = verifiers.some(
-      (v) => v.active && (v.address.toLowerCase() === checkAddress.toLowerCase() || checkAddress.length < 15)
+      (v) =>
+        v.active &&
+        (v.address.toLowerCase() === cleanInput ||
+          v.address.toLowerCase().startsWith(cleanInput) ||
+          cleanInput.startsWith(v.address.toLowerCase().slice(0, 10)))
     );
 
     setCheckResult({ checked: true, isApproved: found });
@@ -133,25 +138,52 @@ export default function GovernancePage() {
 
       {/* Inter-Contract Call Demonstration Box */}
       <div className="p-6 rounded-2xl border border-teal-500/30 bg-gradient-to-r from-slate-900/90 to-slate-950/90 backdrop-blur-xl shadow-xl space-y-4">
-        <div className="flex items-center gap-2">
-          <Cpu className="h-5 w-5 text-teal-400" />
-          <h2 className="text-lg font-bold text-white">Live Inter-Contract Verification Query</h2>
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <Cpu className="h-5 w-5 text-teal-400" />
+            <h2 className="text-lg font-bold text-white">Live Inter-Contract Verification Query</h2>
+          </div>
         </div>
         <p className="text-xs text-slate-400 leading-relaxed">
           When a credit issuer attempts to mint carbon credits, the <span className="text-emerald-300 font-mono">GreenLedger</span> contract executes an on-chain cross-contract call (`env.invoke_contract`) to <span className="text-teal-300 font-mono">VerifierRegistry.is_approved_verifier(issuer)</span>.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 pt-2">
-          <Input
-            value={checkAddress}
-            onChange={(e) => setCheckAddress(e.target.value)}
-            placeholder="Enter Stellar Issuer Address (e.g. GBV2X...R4E91)"
-            className="flex-1 text-xs font-mono"
-          />
-          <Button variant="glow" onClick={handleInterContractCheck} disabled={isChecking} className="gap-2 shrink-0">
-            {isChecking ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
-            <span>Query Cross-Contract State</span>
-          </Button>
+        <div className="space-y-2">
+          <div className="flex flex-col sm:flex-row gap-3 pt-1">
+            <Input
+              value={checkAddress}
+              onChange={(e) => setCheckAddress(e.target.value)}
+              placeholder="Enter Address e.g. GBV2X5Z6P7E5K3J7X9P02L9R4E91M822GBC4M822GDA7KL9P0"
+              className="flex-1 text-xs font-mono"
+            />
+            <Button variant="glow" onClick={handleInterContractCheck} disabled={isChecking} className="gap-2 shrink-0">
+              {isChecking ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
+              <span>Query Cross-Contract State</span>
+            </Button>
+          </div>
+
+          {/* Quick Test Buttons */}
+          <div className="flex flex-wrap items-center gap-2 text-[11px] text-slate-400">
+            <span>Quick Test Inputs:</span>
+            <button
+              onClick={() => setCheckAddress(MOCK_VERIFIERS[0].address)}
+              className="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-teal-300 font-mono"
+            >
+              Verra Address (Approved)
+            </button>
+            <button
+              onClick={() => setCheckAddress(MOCK_VERIFIERS[1].address)}
+              className="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-teal-300 font-mono"
+            >
+              Gold Standard (Approved)
+            </button>
+            <button
+              onClick={() => setCheckAddress('GUNKNOWN999999999999999999999999')}
+              className="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-red-300 font-mono"
+            >
+              Unknown Address (Not Registered)
+            </button>
+          </div>
         </div>
 
         {checkResult?.checked && (
@@ -207,14 +239,25 @@ export default function GovernancePage() {
                   </span>
                 </div>
 
-                <a
-                  href={v.accreditationUri}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-emerald-400 hover:underline flex items-center gap-1 shrink-0"
-                >
-                  Registry URI <ExternalLink className="h-3.5 w-3.5" />
-                </a>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => {
+                      setCheckAddress(v.address);
+                      toast.info(`Address copied to query input! Click "Query Cross-Contract State".`);
+                    }}
+                    className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-teal-300 font-mono"
+                  >
+                    Test Query
+                  </button>
+                  <a
+                    href={v.accreditationUri}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-emerald-400 hover:underline flex items-center gap-1 shrink-0"
+                  >
+                    Registry URI <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                </div>
               </div>
             ))}
           </div>

@@ -11,7 +11,7 @@ export const STELLAR_CONFIG = {
 export const MOCK_PROJECTS = [
   {
     id: '1',
-    issuer: 'GBV2X...R4E91',
+    issuer: 'GBV2X5Z6P7E5K3J7X9P02L9R4E91M822GBC4M822GDA7KL9P0',
     projectName: 'Amazon Rainforest Protection & Restoration',
     creditType: 'Reforestation' as const,
     co2Tons: 15000,
@@ -26,7 +26,7 @@ export const MOCK_PROJECTS = [
   },
   {
     id: '2',
-    issuer: 'GDA7K...L9P02',
+    issuer: 'GDA7KL9P02M822GBC4M822GBV2X5Z6P7E5K3J7X9P02L9R4',
     projectName: 'Sahara Solar Infrastructure Initiative',
     creditType: 'Solar Energy' as const,
     co2Tons: 25000,
@@ -41,7 +41,7 @@ export const MOCK_PROJECTS = [
   },
   {
     id: '3',
-    issuer: 'GCX9P...W4M10',
+    issuer: 'GCX9PW4M102L9R4GBV2X5Z6P7E5K3J7X9P02L9R4E91M822',
     projectName: 'Indonesian Mangrove Blue Carbon Sink',
     creditType: 'Blue Carbon' as const,
     co2Tons: 12000,
@@ -56,7 +56,7 @@ export const MOCK_PROJECTS = [
   },
   {
     id: '4',
-    issuer: 'GBK11...T8Y55',
+    issuer: 'GBK11223344556677889900AABBCCDDEEFFGGHHIIJJKKLLMM',
     projectName: 'Icelandic Geothermal Direct Air Capture',
     creditType: 'Direct Air Capture' as const,
     co2Tons: 8000,
@@ -73,21 +73,21 @@ export const MOCK_PROJECTS = [
 
 export const MOCK_VERIFIERS = [
   {
-    address: 'GBV2X...R4E91',
+    address: 'GBV2X5Z6P7E5K3J7X9P02L9R4E91M822GBC4M822GDA7KL9P0',
     name: 'Verra Carbon Standard',
     accreditationUri: 'https://verra.org/accreditation/v-99120',
     active: true,
     approvedAt: 1769280000000 - 1000 * 60 * 60 * 24 * 30,
   },
   {
-    address: 'GDA7K...L9P02',
+    address: 'GDA7KL9P02M822GBC4M822GBV2X5Z6P7E5K3J7X9P02L9R4',
     name: 'Gold Standard Foundation',
     accreditationUri: 'https://goldstandard.org/accreditation/gs-4819',
     active: true,
     approvedAt: 1769280000000 - 1000 * 60 * 60 * 24 * 60,
   },
   {
-    address: 'GCX9P...W4M10',
+    address: 'GCX9PW4M102L9R4GBV2X5Z6P7E5K3J7X9P02L9R4E91M822',
     name: 'American Carbon Registry (ACR)',
     accreditationUri: 'https://americancarbonregistry.org/acr-1029',
     active: true,
