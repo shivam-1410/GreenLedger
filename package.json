@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "vitest run",
     "deploy:contract": "ts-node scripts/deploy.ts",
+    "deploy:all": "ts-node scripts/deploy-all.ts",
     "whitebelt": "ts-node src/index.ts",
     "whitebelt:wallet": "ts-node scripts/create-wallet.ts",
     "whitebelt:balance": "ts-node scripts/check-balance.ts",
@@ -39,6 +41,7 @@
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.16",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.9"
   }
 }

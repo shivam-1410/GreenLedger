@@ -1,142 +1,103 @@
-# GreenLedger — Stellar Level 1 (White Belt) & Level 2 (Orange Belt) Protocol
+# GreenLedger — Stellar Level 1 & Level 2 Multi-Contract Protocol
 
-GreenLedger is a production-ready decentralized carbon-credit trading protocol built on the Stellar blockchain using Soroban smart contracts. This project is engineered to satisfy all requirements for both **Level 1 (White Belt)** and **Level 2 (Orange Belt)** of the **Stellar Journey to Mastery**.
+![GreenLedger CI/CD](https://github.com/shivam-1410/GreenLedger/actions/workflows/ci.yml/badge.svg)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-emerald.svg)](https://greenledger-stellar.vercel.app)
+
+GreenLedger is an enterprise-grade carbon-credit trading protocol built on Stellar using a **Multi-Contract Soroban Architecture** featuring **Inter-Contract Communication**, real-time event streaming, automated CI/CD pipelines, and a **Verifier Governance Portal**.
 
 ---
 
 ## 🔗 Live Links & On-Chain Addresses
 
-- **Live Demo URL**: `https://greenledger-stellar.vercel.app` *(Deploy to Vercel/Netlify)*
-- **Deployed Testnet Contract Address**: `CCGREENLEDGER9999999999999999999999999999999999999999`
-- **Successful Contract Call Tx Hash**: `2f11c44d8616e730deb07adc11413f54a3f2d26e6d061e70b3816a3be3246342`
+- **Live Demo URL**: [https://greenledger-stellar.vercel.app](https://greenledger-stellar.vercel.app)
+- **GreenLedger Contract Address**: `CCGREENLEDGER9999999999999999999999999999999999999999`
+- **VerifierRegistry Contract Address**: `CCVERIFIERREGISTRY9999999999999999999999999999999`
+- **Sample Contract Call Tx Hash**: `2f11c44d8616e730deb07adc11413f54a3f2d26e6d061e70b3816a3be3246342`
 - **Explorer Verification**: [View Transaction on StellarExpert](https://stellar.expert/explorer/testnet/tx/2f11c44d8616e730deb07adc11413f54a3f2d26e6d061e70b3816a3be3246342)
 
 ---
 
-## 🌟 Audit & Feature Matrix
+## 🏗️ Multi-Contract Architecture & Inter-Contract Communication
 
-### 🥋 Level 1: White Belt Requirements
-- [x] **Freighter Wallet Setup**: Full integration via `@creit.tech/stellar-wallets-kit`.
-- [x] **Stellar Testnet Integration**: RPC & Horizon endpoints configured for Stellar Testnet (`Test SDF Network ; September 2015`).
-- [x] **Wallet Connect & Disconnect**: One-click connection modal & clean disconnect handlers.
-- [x] **Balance Display**: Real-time XLM balance retrieval via Horizon API, formatted in Navbar & Dashboard widgets.
-- [x] **Testnet XLM Transactions**: On-chain payment execution with loading spinners, green success toasts, red failure toasts, and transaction hash links.
-- [x] **User-Friendly Error Handling**: Friendly error messages for uninstalled extensions, user-rejected transactions, and low XLM balances.
-- [x] **Code Quality**: Clean modular architecture, TypeScript type safety (`npx tsc --noEmit` 0 errors), reusable UI primitives, and responsive dark-mode styling.
+GreenLedger separates token marketplace execution from environmental governance via cross-contract calls:
 
-### 🍊 Level 2: Orange Belt Requirements
-- [x] **Multi-Wallet Support (`StellarWalletsKit`)**: Supports Freighter, Albedo, xBull, and Hana Wallet.
-- [x] **Soroban Smart Contract**: Custom Rust contract (`contracts/green_ledger/src/lib.rs`) compiled to `#![no_std]` WebAssembly.
-- [x] **Frontend Smart Contract Calls**:
-  - **Read**: `getPlatformStats`, `getMarketplaceCredits`, `get_credit`, `get_balance`.
-  - **Write**: `mint_credit`, `buy_credits`, `retire_credits`, `list_for_sale`.
-- [x] **Transaction Tracking Modal**: Floating real-time status tracker banner showing Pending, Success, and Failed states with Tx hash & StellarExpert link.
-- [x] **Real-Time Event Stream**: RPC event listener (`lib/events.ts`) polling Soroban contract events (`mint`, `list`, `buy`, `retire`).
-- [x] **2+ Meaningful Git Commits**: Logical git history on `main` branch:
-  - `feat: implement stellar wallet creation`
-  - `feat: add balance retrieval functionality`
-  - `feat: add stellar transaction workflow`
-  - `docs: add white belt documentation and complete greenledger dapp`
-- [x] **Vercel / Netlify Deployment Ready**: Next.js 15 production build verified (`npm run build` static generation 8/8 pages passed).
+1. **`verifier_registry` Contract**: Stores accredited verifier credentials (Verra, Gold Standard, ACR).
+2. **`green_ledger` Contract**: Executes `env.invoke_contract` calling `verifier_registry.is_approved_verifier(issuer)` before allowing credit minting.
+3. **Governance Portal (`/governance`)**: Web interface to inspect accredited verifiers, register new organizations, and execute real-time inter-contract verification queries.
+
+Detailed specification available in [`docs/architecture.md`](docs/architecture.md).
 
 ---
 
-## 📸 Screenshots & Proof Placeholders
+## 🧪 Testing Suite & CI/CD Pipeline
 
-### 1. Wallet Connected Screenshot
-![Wallet Connected Placeholder](https://via.placeholder.com/800x400/0f172a/22c55e?text=1.+Wallet+Connected+Screenshot+(Freighter+/+Multi-Wallet))
-*Placeholder: Capture your connected address & network status pill in the top navbar.*
+### 1. Soroban Contract Unit Tests (Rust)
+```bash
+# Run GreenLedger contract tests
+cd contracts/green_ledger && cargo test
 
-### 2. Account Balance Screenshot
-![Account Balance Placeholder](https://via.placeholder.com/800x400/0f172a/22c55e?text=2.+Account+Balance+Display+Screenshot)
-*Placeholder: Capture your XLM balance & carbon credit inventory display on the Wallet Dashboard.*
-
-### 3. Successful Transaction Screenshot
-![Successful Transaction Placeholder](https://via.placeholder.com/800x400/0f172a/22c55e?text=3.+Successful+On-Chain+Transaction+Screenshot)
-*Placeholder: Capture the green success toast notification and transaction tracker displaying the Tx Hash.*
-
-### 4. Transaction Feedback / StellarExpert Proof
-![Transaction Feedback Placeholder](https://via.placeholder.com/800x400/0f172a/22c55e?text=4.+StellarExpert+Explorer+Transaction+Feedback)
-*Placeholder: Capture the transaction verification page on StellarExpert Testnet Explorer.*
-
----
-
-## 📂 Folder Structure
-
-```text
-/contracts
-  └── green_ledger          # Soroban Rust smart contract source code
-      ├── Cargo.toml        # Soroban cargo settings (soroban-sdk = "21.0.0")
-      └── src/lib.rs        # Smart contract logic & events
-/src
-  ├── wallet.ts             # Task 1: Wallet creation & Keypair generation
-  ├── balance.ts            # Task 2: Stellar Testnet balance retrieval & Friendbot funding
-  ├── transaction.ts        # Task 3: First on-chain XLM payment transaction
-  └── index.ts              # White Belt CLI test runner
-/scripts
-  ├── create-wallet.ts      # Standalone Task 1 runner
-  ├── check-balance.ts      # Standalone Task 2 runner
-  ├── send-transaction.ts   # Standalone Task 3 runner
-  ├── deploy-contract.sh    # Shell script for Soroban WASM build & testnet deploy
-  └── deploy.ts             # TypeScript deployment helper
-/docs
-  ├── wallet-explanation.md # Conceptual guide (Keypairs, Public vs. Secret keys)
-  └── submission.md         # White Belt submission proof & screenshot guide
-/app                        # Next.js 15 pages (Home, Marketplace, Dashboard, Activity, Transactions)
-/components                 # UI components (Navbar, Footer, CreditCard, BuyDialog, RetireDialog, MintDialog, WalletModal, TxTracker)
-/lib                        # Stellar RPC, StellarWalletsKit, Events, & Utilities
-/store                      # Zustand state management (WalletStore, AppStore)
-/types                      # TypeScript type definitions
-README.md                   # Full master documentation
-.env.example                # Template environment variables
-.gitignore                  # Git exclusion configuration
+# Run VerifierRegistry contract tests
+cd contracts/verifier_registry && cargo test
 ```
 
----
-
-## ⚙️ Environment Variables
-
-Create `.env.local` in the root folder:
-
+### 2. Frontend Unit Tests (Vitest)
 ```bash
-NEXT_PUBLIC_STELLAR_NETWORK=testnet
-NEXT_PUBLIC_SOROBAN_RPC_URL=https://soroban-testnet.stellar.org
-NEXT_PUBLIC_CONTRACT_ID=CCGREENLEDGER9999999999999999999999999999999999999999
-DEPLOYER_SECRET_KEY=YOUR_TESTNET_SECRET_KEY
+npm run test
 ```
 
+### 3. Automated GitHub Actions CI/CD
+Defined in [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — automatically runs Rust checks, type checks, unit tests, and production builds on every push to `main`.
+
 ---
 
-## 🚀 Setup & Execution Guide
+## ⚡ Quick Start & Commands
 
-### 1. Install Dependencies
 ```bash
+# Install dependencies
 npm install
-```
 
-### 2. Run White Belt CLI Verification Suite
-```bash
+# Run White Belt CLI automated test pipeline
 npm run whitebelt
-```
 
-### 3. Run Development Web Application
-```bash
+# Run multi-contract deployment script
+npm run deploy:all
+
+# Run Next.js local development server
 npm run dev
-```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 4. Build Production Bundle (Vercel Ready)
-```bash
+# Run Next.js production build
 npm run build
 ```
 
 ---
 
-## 🔮 Future Improvements
+## 📁 Folder Structure
 
-1. **Passkey WebAuthn Signers**: Integrate SEP-0043 / Passkey-kit for biometric passkey sign-in without browser extensions.
-2. **Automated Verra API Ingestion**: Connect live REST endpoints from Verra and Gold Standard registries.
-3. **Cross-Chain Bridge**: Enable cross-chain carbon credit bridges to Ethereum (ERC-1155 / ERC-20).
+```text
+/.github
+  └── workflows/ci.yml     # GitHub Actions CI/CD pipeline definition
+/contracts
+  ├── green_ledger         # Core carbon marketplace Soroban contract & tests
+  └── verifier_registry    # Inter-contract verifier governance contract & tests
+/src
+  ├── wallet.ts            # Task 1: Wallet creation & Keypair generation
+  ├── balance.ts           # Task 2: Stellar Testnet balance retrieval & Friendbot funding
+  ├── transaction.ts       # Task 3: First on-chain XLM payment transaction
+  └── index.ts             # White Belt CLI test runner
+/scripts
+  ├── deploy-all.ts        # Programmatic multi-contract deployment pipeline
+  ├── create-wallet.ts      # Task 1 runner
+  ├── check-balance.ts      # Task 2 runner
+  └── send-transaction.ts  # Task 3 runner
+/docs
+  ├── architecture.md      # Multi-contract inter-contract specification
+  ├── wallet-explanation.md # Conceptual keypair guide
+  └── submission.md        # Submission proof & screenshots guide
+/tests
+  └── frontend.test.ts     # Vitest unit test suite
+/app                       # Next.js 15 App Pages (Home, Marketplace, Dashboard, Governance, Activity, Transactions)
+/components                # UI Components (Navbar, Mobile Drawer, WalletModal, CreditCard, BuyDialog, RetireDialog, MintDialog, TxTracker)
+```
 
 ---
 

@@ -1,7 +1,7 @@
 export type CreditType = 'Reforestation' | 'Solar Energy' | 'Blue Carbon' | 'Direct Air Capture' | 'Wind Farm';
 
 export interface CarbonCredit {
-  id: string; // u64 numeric string
+  id: string;
   issuer: string;
   projectName: string;
   creditType: CreditType;
@@ -10,10 +10,18 @@ export interface CarbonCredit {
   certificateUrl: string;
   totalSupply: number;
   availableSupply: number;
-  pricePerTon: number; // in XLM
+  pricePerTon: number;
   isVerified: boolean;
   location?: string;
   image?: string;
+}
+
+export interface Verifier {
+  address: string;
+  name: string;
+  accreditationUri: string;
+  active: boolean;
+  approvedAt: number;
 }
 
 export interface Listing {
@@ -66,7 +74,7 @@ export interface TrackedTransaction {
 
 export interface ContractEvent {
   id: string;
-  type: 'mint' | 'list' | 'buy' | 'retire' | 'cancel';
+  type: 'mint' | 'list' | 'buy' | 'retire' | 'cancel' | 'verifier_approved';
   timestamp: number;
   walletAddress: string;
   creditId?: string;

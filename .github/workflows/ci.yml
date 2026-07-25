@@ -1,0 +1,76 @@
+name: GreenLedger CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  soroban-contracts-ci:
+    name: Build & Test Soroban Smart Contracts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Cache Cargo Dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Check GreenLedger Contract
+        run: |
+          cd contracts/green_ledger
+          cargo check
+
+      - name: Test GreenLedger Contract
+        run: |
+          cd contracts/green_ledger
+          cargo test
+
+      - name: Check VerifierRegistry Contract
+        run: |
+          cd contracts/verifier_registry
+          cargo check
+
+      - name: Test VerifierRegistry Contract
+        run: |
+          cd contracts/verifier_registry
+          cargo test
+
+  frontend-ci:
+    name: TypeCheck, Test & Build Frontend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: TypeScript Type Check
+        run: npx tsc --noEmit
+
+      - name: Run Vitest Unit Tests
+        run: npm run test
+
+      - name: Next.js Production Build
+        run: npm run build

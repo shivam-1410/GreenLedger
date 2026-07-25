@@ -4,6 +4,7 @@ export const STELLAR_CONFIG = {
   rpcUrl: process.env.NEXT_PUBLIC_SOROBAN_RPC_URL || 'https://soroban-testnet.stellar.org',
   horizonUrl: 'https://horizon-testnet.stellar.org',
   contractId: process.env.NEXT_PUBLIC_CONTRACT_ID || 'CCGREENLEDGER9999999999999999999999999999999999999999',
+  verifierRegistryContractId: process.env.NEXT_PUBLIC_VERIFIER_REGISTRY_ID || 'CCVERIFIERREGISTRY9999999999999999999999999999999',
   explorerUrl: 'https://stellar.expert/explorer/testnet',
 };
 
@@ -67,5 +68,29 @@ export const MOCK_PROJECTS = [
     isVerified: true,
     location: 'Hellisheiði, Iceland',
     image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80',
+  },
+];
+
+export const MOCK_VERIFIERS = [
+  {
+    address: 'GBV2X...R4E91',
+    name: 'Verra Carbon Standard',
+    accreditationUri: 'https://verra.org/accreditation/v-99120',
+    active: true,
+    approvedAt: 1769280000000 - 1000 * 60 * 60 * 24 * 30,
+  },
+  {
+    address: 'GDA7K...L9P02',
+    name: 'Gold Standard Foundation',
+    accreditationUri: 'https://goldstandard.org/accreditation/gs-4819',
+    active: true,
+    approvedAt: 1769280000000 - 1000 * 60 * 60 * 24 * 60,
+  },
+  {
+    address: 'GCX9P...W4M10',
+    name: 'American Carbon Registry (ACR)',
+    accreditationUri: 'https://americancarbonregistry.org/acr-1029',
+    active: true,
+    approvedAt: 1769280000000 - 1000 * 60 * 60 * 24 * 90,
   },
 ];
