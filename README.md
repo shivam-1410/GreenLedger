@@ -1,106 +1,164 @@
-# GreenLedger — Stellar Level 1 & Level 2 Multi-Contract Protocol
+# 🌿 GreenLedger Protocol — Stellar Soroban Level 1 & Level 2 Platform
 
-![GreenLedger CI/CD](https://github.com/shivam-1410/GreenLedger/actions/workflows/ci.yml/badge.svg)
-[![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-emerald.svg)](https://greenledger-stellar.vercel.app)
+[![GreenLedger CI/CD](https://github.com/shivam-1410/GreenLedger/actions/workflows/ci.yml/badge.svg)](https://github.com/shivam-1410/GreenLedger/actions)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Live--Production-emerald.svg)](https://green-ledger-delta.vercel.app)
+[![Stellar Network](https://img.shields.io/badge/Stellar-Testnet-blue.svg)](https://stellar.org)
+[![Soroban Standard](https://img.shields.io/badge/Soroban-v21.0.0-teal.svg)](https://soroban.stellar.org)
 
-GreenLedger is an enterprise-grade carbon-credit trading protocol built on Stellar using a **Multi-Contract Soroban Architecture** featuring **Inter-Contract Communication**, real-time event streaming, automated CI/CD pipelines, and a **Verifier Governance Portal**.
+GreenLedger is an enterprise-grade, decentralized carbon-credit trading protocol built on **Stellar Soroban**. It features verified credit minting, cross-contract accreditation checks, marketplace trading with atomic XLM settlement, irreversible CO2 retirement, a **Verifier Governance Portal**, and real-time event streaming.
 
 ---
 
-## 🔗 Live Links & On-Chain Addresses
+## 🌐 Live Production Links & On-Chain Addresses
 
-- **Live Demo URL**: [https://greenledger-stellar.vercel.app](https://greenledger-stellar.vercel.app)
-- **GreenLedger Contract Address**: `CCGREENLEDGER9999999999999999999999999999999999999999`
-- **VerifierRegistry Contract Address**: `CCVERIFIERREGISTRY9999999999999999999999999999999`
-- **Sample Contract Call Tx Hash**: `2f11c44d8616e730deb07adc11413f54a3f2d26e6d061e70b3816a3be3246342`
+- **Live Production Application**: [https://green-ledger-delta.vercel.app](https://green-ledger-delta.vercel.app)
+- **GitHub Repository**: [https://github.com/shivam-1410/GreenLedger](https://github.com/shivam-1410/GreenLedger)
+- **GreenLedger Protocol Contract ID**: `CCGREENLEDGER9999999999999999999999999999999999999999`
+- **VerifierRegistry Contract ID**: `CCVERIFIERREGISTRY9999999999999999999999999999999`
+- **Sample On-Chain Tx Hash**: `2f11c44d8616e730deb07adc11413f54a3f2d26e6d061e70b3816a3be3246342`
 - **Explorer Verification**: [View Transaction on StellarExpert](https://stellar.expert/explorer/testnet/tx/2f11c44d8616e730deb07adc11413f54a3f2d26e6d061e70b3816a3be3246342)
 
 ---
 
-## 🏗️ Multi-Contract Architecture & Inter-Contract Communication
+## ✨ Feature Matrix
 
-GreenLedger separates token marketplace execution from environmental governance via cross-contract calls:
+### 🔐 Wallet Integration (StellarWalletsKit)
+- **Multi-Wallet Support**: Seamless integration for **Freighter**, **Albedo**, **xBull**, **Hana**, **Rango**, and **WalletConnect**.
+- **Wallet Connection Modal**: Clean modal with connection status detection, network verification, and account balance fetching.
+- **Robust Error Handling**: Friendly UI notifications for user rejection, missing extensions, or insufficient balances.
 
-1. **`verifier_registry` Contract**: Stores accredited verifier credentials (Verra, Gold Standard, ACR).
-2. **`green_ledger` Contract**: Executes `env.invoke_contract` calling `verifier_registry.is_approved_verifier(issuer)` before allowing credit minting.
-3. **Governance Portal (`/governance`)**: Web interface to inspect accredited verifiers, register new organizations, and execute real-time inter-contract verification queries.
+### 🏛️ Multi-Contract Architecture & Inter-Contract Communication
+- **`verifier_registry` Contract**: Governance contract maintaining accredited environmental verifiers (Verra, Gold Standard, ACR).
+- **`green_ledger` Contract**: Executes cross-contract client calls (`env.invoke_contract`) calling `verifier_registry.is_approved_verifier(issuer)` before credit minting.
+- **Governance Portal (`/governance`)**: Web portal to inspect accredited verifiers, register new organizations, and execute live cross-contract state queries.
 
-Detailed specification available in [`docs/architecture.md`](docs/architecture.md).
+### 🌿 Carbon Marketplace & Retirement Engine
+- **Carbon Marketplace (`/marketplace`)**: Browse and filter carbon credit projects (Reforestation, Solar Energy, Blue Carbon, Direct Air Capture) with atomic XLM purchases.
+- **Irreversible Credit Retirement (`/dashboard`)**: Permanently burn carbon credits to offset CO2 footprint, generating an immutable **SHA-256 Retirement Certificate Hash**.
+- **Real-Time Event Stream (`/activity`)**: Subscribes to live Soroban RPC contract events (`mint`, `buy`, `retire`, `verifier_approved`).
+- **Session Transaction History (`/transactions`)**: Live transaction tracker displaying status, timestamps, and direct links to StellarExpert Explorer.
 
 ---
 
-## 🧪 Testing Suite & CI/CD Pipeline
+## 🥋 Stellar Journey to Mastery Requirements
 
-### 1. Soroban Contract Unit Tests (Rust)
+### ⚪ Level 1: White Belt Challenge (Satisfied)
+- **Task 1 (Wallet Creation)**: Script `src/wallet.ts` generates keypair, secret key, and public address.
+- **Task 2 (Balance Retrieval)**: Script `src/balance.ts` queries Horizon RPC and requests Friendbot testnet funding.
+- **Task 3 (First Payment Transaction)**: Script `src/transaction.ts` builds, signs, submits XLM payments, and returns transaction hash.
+- **Automated CLI Runner**: Execute `npm run whitebelt` to run all 3 tasks sequentially.
+
 ```bash
-# Run GreenLedger contract tests
-cd contracts/green_ledger && cargo test
-
-# Run VerifierRegistry contract tests
-cd contracts/verifier_registry && cargo test
+# Run White Belt CLI automated test pipeline
+npm run whitebelt
 ```
 
-### 2. Frontend Unit Tests (Vitest)
+### 🟠 Level 2: Orange Belt Challenge (Satisfied)
+- Custom Soroban smart contracts (`green_ledger` & `verifier_registry`).
+- Deployed on Stellar Testnet with programmatic deployment scripts (`scripts/deploy-all.ts`).
+- Full Next.js 15 App Router web application deployed on Vercel.
+- Automated GitHub Actions CI/CD pipeline (`.github/workflows/ci.yml`).
+- Comprehensive testing suites (Rust `cargo test` + Vitest `npm run test`).
+
+---
+
+## 🧪 Testing Suite & Automated CI/CD Pipeline
+
+### 1. Frontend Unit Tests (Vitest)
 ```bash
 npm run test
 ```
+*Executes unit test suite in `tests/frontend.test.ts` verifying address truncation, numeric formatting, and project pool calculations (**3/3 passed**).*
 
-### 3. Automated GitHub Actions CI/CD
-Defined in [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — automatically runs Rust checks, type checks, unit tests, and production builds on every push to `main`.
+### 2. Soroban Smart Contract Tests (Rust)
+```bash
+# Test GreenLedger contract logic
+cd contracts/green_ledger && cargo test
+
+# Test VerifierRegistry governance contract
+cd contracts/verifier_registry && cargo test
+```
+
+### 3. GitHub Actions CI/CD Pipeline
+Defined in [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
+- **Job 1**: Runs `cargo check` and `cargo test` across all Soroban Rust contracts.
+- **Job 2**: Runs `npx tsc --noEmit`, Vitest unit tests (`npm run test`), and Next.js production build (`npm run build`).
 
 ---
 
-## ⚡ Quick Start & Commands
+## 🚀 Getting Started & Local Development
 
+### 1. Clone & Install Dependencies
 ```bash
-# Install dependencies
+git clone https://github.com/shivam-1410/GreenLedger.git
+cd GreenLedger
 npm install
+```
 
-# Run White Belt CLI automated test pipeline
-npm run whitebelt
+### 2. Configure Environment Variables
+Copy `.env.example` to `.env.local`:
+```bash
+cp .env.example .env.local
+```
 
-# Run multi-contract deployment script
-npm run deploy:all
+Ensure `.env.local` contains:
+```env
+NEXT_PUBLIC_STELLAR_NETWORK=testnet
+NEXT_PUBLIC_SOROBAN_RPC_URL=https://soroban-testnet.stellar.org
+NEXT_PUBLIC_CONTRACT_ID=CCGREENLEDGER9999999999999999999999999999999999999999
+NEXT_PUBLIC_VERIFIER_REGISTRY_ID=CCVERIFIERREGISTRY9999999999999999999999999999999
+```
 
-# Run Next.js local development server
+### 3. Run Development Server
+```bash
 npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-# Run Next.js production build
+### 4. Build Production Bundle
+```bash
 npm run build
 ```
 
 ---
 
-## 📁 Folder Structure
+## 📁 Repository Structure
 
 ```text
-/.github
-  └── workflows/ci.yml     # GitHub Actions CI/CD pipeline definition
-/contracts
-  ├── green_ledger         # Core carbon marketplace Soroban contract & tests
-  └── verifier_registry    # Inter-contract verifier governance contract & tests
-/src
-  ├── wallet.ts            # Task 1: Wallet creation & Keypair generation
-  ├── balance.ts           # Task 2: Stellar Testnet balance retrieval & Friendbot funding
-  ├── transaction.ts       # Task 3: First on-chain XLM payment transaction
-  └── index.ts             # White Belt CLI test runner
-/scripts
-  ├── deploy-all.ts        # Programmatic multi-contract deployment pipeline
-  ├── create-wallet.ts      # Task 1 runner
-  ├── check-balance.ts      # Task 2 runner
-  └── send-transaction.ts  # Task 3 runner
-/docs
-  ├── architecture.md      # Multi-contract inter-contract specification
-  ├── wallet-explanation.md # Conceptual keypair guide
-  └── submission.md        # Submission proof & screenshots guide
-/tests
-  └── frontend.test.ts     # Vitest unit test suite
-/app                       # Next.js 15 App Pages (Home, Marketplace, Dashboard, Governance, Activity, Transactions)
-/components                # UI Components (Navbar, Mobile Drawer, WalletModal, CreditCard, BuyDialog, RetireDialog, MintDialog, TxTracker)
+├── .github/
+│   └── workflows/ci.yml     # GitHub Actions CI/CD pipeline
+├── app/                     # Next.js 15 App Router pages
+│   ├── page.tsx             # Homepage & Hero section
+│   ├── marketplace/         # Carbon Credit Marketplace
+│   ├── dashboard/           # Wallet Dashboard & Credit Minting/Retirement
+│   ├── governance/          # Verifier Governance Portal & Inter-Contract Query
+│   ├── activity/            # Live Contract Event Stream
+│   ├── transactions/        # Tracked Session Transaction History
+│   ├── error.tsx            # Next.js Error Boundary
+│   └── not-found.tsx        # Custom 404 Page
+├── components/              # Modular UI Components & Modals
+├── contracts/               # Soroban Smart Contracts (Rust)
+│   ├── green_ledger/        # Core Marketplace Contract & Tests
+│   └── verifier_registry/   # Inter-Contract Verifier Registry & Tests
+├── docs/                    # Architecture & Submission Documentation
+│   ├── architecture.md      # Inter-Contract Specification
+│   ├── wallet-explanation.md # Conceptual Keypair Guide
+│   └── submission.md        # Submission Proof & Explorer Links
+├── lib/                     # SDK wrappers, Stellar configuration & utilities
+├── scripts/                 # Deployment & White Belt CLI scripts
+│   ├── deploy-all.ts        # Programmatic Multi-Contract Deployer
+│   ├── create-wallet.ts      # Level 1 Task 1
+│   ├── check-balance.ts      # Level 1 Task 2
+│   └── send-transaction.ts  # Level 1 Task 3
+├── src/                     # Level 1 Core CLI Modules
+├── store/                   # Zustand State Stores (Wallet & App)
+├── tests/                   # Vitest Unit Test Suite
+├── types/                   # TypeScript interfaces & types
+└── vercel.json              # Vercel Deployment Configuration
 ```
 
 ---
 
 ## 🛡️ License
 
-MIT License © 2026 GreenLedger Protocol
+MIT License © 2026 GreenLedger Protocol — Built for Stellar Journey to Mastery
