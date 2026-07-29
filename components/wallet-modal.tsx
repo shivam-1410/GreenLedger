@@ -36,10 +36,10 @@ const WALLET_OPTIONS = [
     recommended: false,
   },
   {
-    id: 'hana',
-    name: 'Hana Wallet',
-    description: 'Multi-chain web3 wallet with Stellar support',
-    icon: '🌸',
+    id: 'demo',
+    name: 'Quick Connect (Testnet)',
+    description: 'Instant 1-click Testnet account for fast testing & demoing',
+    icon: '🚀',
     recommended: false,
   },
 ];

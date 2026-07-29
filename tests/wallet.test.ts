@@ -18,6 +18,15 @@ import {
 } from '../src/wallet';
 
 vi.mock('@stellar/freighter-api', () => ({
+  __esModule: true,
+  default: {
+    isConnected: vi.fn(),
+    requestAccess: vi.fn(),
+    getAddress: vi.fn(),
+    getPublicKey: vi.fn(),
+    signTransaction: vi.fn(),
+    isAllowed: vi.fn(),
+  },
   isConnected: vi.fn(),
   requestAccess: vi.fn(),
   getAddress: vi.fn(),
@@ -28,6 +37,7 @@ vi.mock('@stellar/freighter-api', () => ({
 
 vi.mock('@creit.tech/stellar-wallets-kit', () => ({
   StellarWalletsKit: {
+    init: vi.fn(),
     setWallet: vi.fn(),
     getAddress: vi.fn(),
     signTransaction: vi.fn(),

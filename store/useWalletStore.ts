@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { WalletState } from '@/types';
-import { connectWallet, disconnectWallet } from '@/lib/wallet';
+import { connectWallet, disconnectWallet, signTransactionXdr } from '@/lib/wallet';
 import { fetchAccountXlmBalance } from '@/lib/stellar';
 
 interface WalletStoreState extends WalletState {
@@ -10,6 +10,7 @@ interface WalletStoreState extends WalletState {
   disconnect: () => void;
   refreshBalance: () => Promise<void>;
   clearError: () => void;
+  signTx: (xdr: string) => Promise<string>;
 }
 
 export const useWalletStore = create<WalletStoreState>((set, get) => ({
@@ -65,4 +66,12 @@ export const useWalletStore = create<WalletStoreState>((set, get) => ({
   },
 
   clearError: () => set({ error: null }),
+
+  signTx: async (xdr: string) => {
+    const { publicKey, walletType } = get();
+    if (!publicKey) {
+      throw new Error('No wallet has been connected. Please connect your wallet first.');
+    }
+    return signTransactionXdr(xdr, publicKey, walletType);
+  },
 }));
