@@ -77,11 +77,11 @@ describe('Stellar Wallet Integration & Verification Suite', () => {
 
     it('requests wallet permissions from Freighter correctly', async () => {
       const mockAddress = 'GB3K6BLTHFD6E5MFECE7ODCYQXNIVKCYBHJPOOLLJ36RTL43R7KCY2Z4';
-      vi.mocked(freighterApi.requestAccess).mockResolvedValue(mockAddress as any);
+      vi.mocked((freighterApi as any).requestAccess).mockResolvedValue(mockAddress as any);
 
       const address = await requestWalletAccess(FREIGHTER_ID);
       expect(address).toBe(mockAddress);
-      expect(freighterApi.requestAccess).toHaveBeenCalled();
+      expect((freighterApi as any).requestAccess).toHaveBeenCalled();
 
       const addressSrc = await requestWalletPermissions();
       expect(addressSrc).toBe(mockAddress);
@@ -92,7 +92,7 @@ describe('Stellar Wallet Integration & Verification Suite', () => {
     it('retrieves active Freighter wallet address', async () => {
       const mockAddress = 'GD2AQNDRSSX2BD6L75UUYH3JH4MUVHSYM4PCXJNOHW3XLQ67TSEQKGWO';
       vi.mocked(freighterApi.getPublicKey).mockResolvedValue({ address: mockAddress } as any);
-      vi.mocked(freighterApi.getAddress).mockResolvedValue({ address: mockAddress } as any);
+      vi.mocked((freighterApi as any).getAddress).mockResolvedValue({ address: mockAddress } as any);
 
       const address = await getActiveWalletAddress(FREIGHTER_ID);
       expect(address).toBe(mockAddress);
@@ -115,8 +115,8 @@ describe('Stellar Wallet Integration & Verification Suite', () => {
     it('successfully connects to Freighter wallet', async () => {
       const mockAddress = 'GD2AQNDRSSX2BD6L75UUYH3JH4MUVHSYM4PCXJNOHW3XLQ67TSEQKGWO';
       vi.mocked(freighterApi.isConnected).mockResolvedValue(true as any);
-      vi.mocked(freighterApi.requestAccess).mockResolvedValue(mockAddress as any);
-      vi.mocked(freighterApi.getAddress).mockResolvedValue(mockAddress as any);
+      vi.mocked((freighterApi as any).requestAccess).mockResolvedValue(mockAddress as any);
+      vi.mocked((freighterApi as any).getAddress).mockResolvedValue(mockAddress as any);
 
       const result = await connectWallet(FREIGHTER_ID);
       expect(result.address).toBe(mockAddress);
