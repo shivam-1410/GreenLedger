@@ -2,7 +2,7 @@ import { Keypair } from '@stellar/stellar-sdk';
 import {
   isConnected as isFreighterConnected,
   requestAccess as requestFreighterAccess,
-  getAddress as getFreighterAddress,
+  getPublicKey as getFreighterAddress,
   signTransaction as signFreighterTx,
   isAllowed as isFreighterAllowed,
 } from '@stellar/freighter-api';
@@ -95,8 +95,9 @@ export async function signTransactionWithWallet(
   if (walletId === 'freighter') {
     const res: any = await signFreighterTx(xdr, {
       networkPassphrase: 'Test SDF Network ; September 2015',
+      accountToSign: publicKey,
       address: publicKey,
-    });
+    } as any);
     return typeof res === 'string' ? res : res.signedTxXdr || res;
   } else {
     const res: any = await StellarWalletsKit.signTransaction(xdr, {

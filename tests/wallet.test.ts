@@ -21,6 +21,7 @@ vi.mock('@stellar/freighter-api', () => ({
   isConnected: vi.fn(),
   requestAccess: vi.fn(),
   getAddress: vi.fn(),
+  getPublicKey: vi.fn(),
   signTransaction: vi.fn(),
   isAllowed: vi.fn(),
 }));
@@ -80,6 +81,7 @@ describe('Stellar Wallet Integration & Verification Suite', () => {
   describe('Address Retrieval Functionality', () => {
     it('retrieves active Freighter wallet address', async () => {
       const mockAddress = 'GD2AQNDRSSX2BD6L75UUYH3JH4MUVHSYM4PCXJNOHW3XLQ67TSEQKGWO';
+      vi.mocked(freighterApi.getPublicKey).mockResolvedValue({ address: mockAddress } as any);
       vi.mocked(freighterApi.getAddress).mockResolvedValue({ address: mockAddress } as any);
 
       const address = await getActiveWalletAddress(FREIGHTER_ID);
@@ -133,6 +135,7 @@ describe('Stellar Wallet Integration & Verification Suite', () => {
       expect(signed).toBe(mockSignedXdr);
       expect(freighterApi.signTransaction).toHaveBeenCalledWith(mockXdr, {
         networkPassphrase: 'Test SDF Network ; September 2015',
+        accountToSign: mockPubKey,
         address: mockPubKey,
       });
 

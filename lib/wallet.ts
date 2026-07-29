@@ -5,7 +5,7 @@ import {
 import {
   isConnected as isFreighterInstalled,
   requestAccess as requestFreighterAccess,
-  getAddress as getFreighterAddress,
+  getPublicKey as getFreighterAddress,
   signTransaction as signFreighterTx,
   isAllowed as isFreighterAllowed,
 } from '@stellar/freighter-api';
@@ -45,7 +45,7 @@ export async function checkFreighterStatus(): Promise<boolean> {
  */
 export async function requestWalletAccess(walletId: string = FREIGHTER_ID): Promise<string> {
   if (walletId === FREIGHTER_ID) {
-    const accessRes = await requestFreighterAccess();
+    const accessRes: any = await requestFreighterAccess();
     const address = typeof accessRes === 'string' ? accessRes : accessRes?.address;
     if (!address) {
       throw new Error('User denied access or no account found in Freighter wallet.');
@@ -63,7 +63,7 @@ export async function requestWalletAccess(walletId: string = FREIGHTER_ID): Prom
  */
 export async function getActiveWalletAddress(walletId: string = FREIGHTER_ID): Promise<string> {
   if (walletId === FREIGHTER_ID) {
-    const addrObj = await getFreighterAddress();
+    const addrObj: any = await getFreighterAddress();
     let address = typeof addrObj === 'string' ? addrObj : addrObj?.address;
     if (!address) {
       address = await requestWalletAccess(FREIGHTER_ID);
@@ -136,8 +136,9 @@ export async function signTransactionXdr(xdr: string, publicKey: string, walletT
     if (walletType === 'freighter' || walletType === FREIGHTER_ID) {
       const res: any = await signFreighterTx(xdr, {
         networkPassphrase: 'Test SDF Network ; September 2015',
+        accountToSign: publicKey,
         address: publicKey,
-      });
+      } as any);
       return typeof res === 'string' ? res : res.signedTxXdr || res;
     }
 
