@@ -8,6 +8,8 @@ import {
 } from '@stellar/stellar-sdk';
 import { STELLAR_CONFIG } from '../lib/config';
 
+import { fundWithFriendbot } from './balance';
+
 const server = new Horizon.Server(STELLAR_CONFIG.horizonUrl);
 
 export interface TransactionResult {
@@ -32,8 +34,14 @@ export async function executeFirstTransaction(
   const senderKeypair = Keypair.fromSecret(senderSecretKey);
   const senderPublicKey = senderKeypair.publicKey();
 
-  // Default destination to a known testnet account or random test pair if not provided
-  const destAddress = destinationPublicKey || 'GBV2X5Z6P7E5K3J7X9P02L9R4E91M822GBC4M822GDA7KL9P0';
+  // Ensure valid destination address (create & fund receiver if not provided)
+  let destAddress = destinationPublicKey;
+  if (!destAddress) {
+    const tempReceiver = Keypair.random();
+    destAddress = tempReceiver.publicKey();
+    console.log(`Creating & funding temporary receiver account: ${destAddress}...`);
+    await fundWithFriendbot(destAddress);
+  }
 
   console.log(`Sender Address      : ${senderPublicKey}`);
   console.log(`Destination Address : ${destAddress}`);
