@@ -30,14 +30,14 @@ jobs:
             target/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
-      - name: Pin ed25519-dalek Version
+      - name: Pin ed25519-dalek Version in Cargo Lockfile
         run: |
           cd contracts/green_ledger
-          cargo generate-lockfile || true
-          cargo update -p ed25519-dalek --precise 2.1.0 || true
+          cargo generate-lockfile
+          cargo update -p ed25519-dalek --precise 2.1.0
           cd ../verifier_registry
-          cargo generate-lockfile || true
-          cargo update -p ed25519-dalek --precise 2.1.0 || true
+          cargo generate-lockfile
+          cargo update -p ed25519-dalek --precise 2.1.0
 
       - name: Check GreenLedger Contract
         run: |
