@@ -12,7 +12,9 @@ soroban-sdk = "21.0.0"
 
 [dev-dependencies]
 soroban-sdk = { version = "21.0.0", features = ["testutils"] }
-ed25519-dalek = "<3.0.0"
+
+[patch.crates-io]
+ed25519-dalek = { version = "2.1.0" }
 
 [profile.release]
 opt-level = "z"
