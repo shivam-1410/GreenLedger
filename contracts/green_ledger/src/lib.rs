@@ -3,12 +3,10 @@ use soroban_sdk::{
     contract, contractimpl, contracttype, symbol_short, Address, BytesN, Env, String, Symbol, Vec,
 };
 
-// Inter-Contract Interface for VerifierRegistryContract
-mod verifier_registry {
-    soroban_sdk::contractclient!(
-        name = "VerifierRegistryClient",
-        contract = "verifier_registry"
-    );
+// Inter-Contract Client Trait for VerifierRegistryContract
+#[soroban_sdk::contractclient(name = "VerifierRegistryClient")]
+pub trait VerifierRegistryInterface {
+    fn is_approved_verifier(env: Env, verifier: Address) -> bool;
 }
 
 #[contracttype]
@@ -125,7 +123,7 @@ impl GreenLedgerContract {
             .instance()
             .get::<_, Address>(&DataKey::VerifierRegistryAddress)
         {
-            let client = verifier_registry::VerifierRegistryClient::new(&env, &registry_addr);
+            let client = VerifierRegistryClient::new(&env, &registry_addr);
             client.is_approved_verifier(&issuer)
         } else {
             true // fallback to default true if registry address not configured
