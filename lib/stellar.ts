@@ -1,27 +1,89 @@
 import {
   rpc,
+  Horizon,
   Contract,
   Address,
   nativeToScVal,
   scValToNative,
   xdr,
   TransactionBuilder,
+  Operation,
+  Asset,
+  Networks,
 } from '@stellar/stellar-sdk';
 import { STELLAR_CONFIG, MOCK_PROJECTS } from './config';
 import { CarbonCredit, PlatformStats } from '@/types';
 
 export const sorobanServer = new rpc.Server(STELLAR_CONFIG.rpcUrl);
+export const horizonServer = new Horizon.Server(STELLAR_CONFIG.horizonUrl);
 
 export async function fetchAccountXlmBalance(publicKey: string): Promise<number> {
   try {
     const res = await fetch(`${STELLAR_CONFIG.horizonUrl}/accounts/${publicKey}`);
-    if (!res.ok) return 100.0;
+    if (!res.ok) return 0;
     const data = await res.json();
     const nativeBalance = data.balances?.find((b: any) => b.asset_type === 'native');
     return nativeBalance ? parseFloat(nativeBalance.balance) : 0;
   } catch (err) {
     console.warn('Error fetching account balance from Horizon:', err);
-    return 250.0;
+    return 0;
+  }
+}
+
+export async function fundAccountWithFriendbot(publicKey: string): Promise<boolean> {
+  try {
+    const res = await fetch(`https://friendbot.stellar.org?addr=${encodeURIComponent(publicKey)}`);
+    return res.ok;
+  } catch (err) {
+    console.error('Friendbot request error:', err);
+    return false;
+  }
+}
+
+export async function buildXlmPaymentTxXdr(
+  senderPublicKey: string,
+  destinationPublicKey: string,
+  amountXlm: string
+): Promise<string> {
+  const account = await horizonServer.loadAccount(senderPublicKey);
+  const tx = new TransactionBuilder(account, {
+    fee: '100',
+    networkPassphrase: STELLAR_CONFIG.networkPassphrase,
+  })
+    .addOperation(
+      Operation.payment({
+        destination: destinationPublicKey,
+        asset: Asset.native(),
+        amount: amountXlm,
+      })
+    )
+    .setTimeout(30)
+    .build();
+
+  return tx.toXDR();
+}
+
+export async function submitHorizonTransaction(
+  signedTxXdr: string
+): Promise<{ status: 'SUCCESS' | 'FAILED'; hash: string; error?: string }> {
+  try {
+    const tx = TransactionBuilder.fromXDR(signedTxXdr, STELLAR_CONFIG.networkPassphrase);
+    const response = await horizonServer.submitTransaction(tx);
+    return {
+      status: 'SUCCESS',
+      hash: response.hash,
+    };
+  } catch (err: any) {
+    console.error('Submit Horizon transaction error:', err);
+    let errMsg = err?.message || 'Transaction execution failed';
+    if (err?.response?.data?.extras?.result_codes) {
+      errMsg += ` [Codes: ${JSON.stringify(err.response.data.extras.result_codes)}]`;
+    }
+    return {
+      status: 'FAILED',
+      hash: '',
+      error: errMsg,
+    };
   }
 }
 

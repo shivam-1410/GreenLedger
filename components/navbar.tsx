@@ -28,6 +28,7 @@ export function Navbar() {
 
   const navLinks = [
     { href: '/', label: 'Home', icon: Leaf },
+    { href: '/level1', label: 'Level 1 Suite', icon: ShieldCheck },
     { href: '/marketplace', label: 'Marketplace', icon: ShoppingBag },
     { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/governance', label: 'Governance', icon: ShieldCheck },

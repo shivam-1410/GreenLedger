@@ -5,6 +5,7 @@ import { useWalletStore } from '@/store/useWalletStore';
 import { useAppStore } from '@/store/useAppStore';
 import { WalletModal } from '@/components/wallet-modal';
 import { RetireDialog } from '@/components/retire-dialog';
+import { SendXlmCard } from '@/components/send-xlm-card';
 import { Button } from '@/components/ui/button';
 import { formatNumber, truncateAddress, formatTimestamp, getExplorerAccountUrl } from '@/lib/utils';
 import { CarbonCredit } from '@/types';
@@ -141,6 +142,9 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
+
+      {/* Level 1 Direct XLM Payment Section */}
+      <SendXlmCard />
 
       {/* Owned Credit Inventory */}
       <div className="space-y-4">

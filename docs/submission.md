@@ -1,6 +1,14 @@
-# Stellar White Belt Challenge — Submission Document
+# Stellar White Belt Challenge — Level 1 Submission Document
 
-This document contains proof of completion for the **Stellar Journey to Mastery — White Belt Challenge**.
+This document contains full proof and verification instructions for **Level 1 Requirements**:
+
+| Level 1 Requirement | Web UI Location (`/level1`) | CLI Script / Code Implementation |
+| :--- | :--- | :--- |
+| **1. Wallet Setup** (Freighter & Testnet) | `/level1` -> Freighter setup badge & Network Status | `src/wallet.ts` (`checkFreighterPermissions`) |
+| **2. Wallet Connection** (Connect & Disconnect) | `/level1` -> Connect / Disconnect buttons | `store/useWalletStore.ts` (`connect`, `disconnect`) |
+| **3. Balance Handling** (Fetch & Display XLM Balance) | `/level1` & Header Navbar -> XLM Balance display | `lib/stellar.ts` (`fetchAccountXlmBalance`) |
+| **4. Transaction Flow** (Send XLM, Status Feedback, Hash link) | `/level1` & `/dashboard` -> Send XLM Card | `lib/stellar.ts` (`buildXlmPaymentTxXdr`, `submitHorizonTransaction`) |
+| **5. Development Standards** (UI setup, wallet, balance, tx logic, error handling) | Whole Web DApp (`npm run dev`) | Unit tests (`npm test` -> `tests/level1.test.ts`) |
 
 ---
 
