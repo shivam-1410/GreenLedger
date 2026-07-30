@@ -34,10 +34,10 @@ jobs:
         run: |
           cd contracts/green_ledger
           cargo generate-lockfile
-          cargo update -p ed25519-dalek --precise 2.1.0
+          cargo update -p ed25519-dalek@3.0.0 --precise 2.2.0 || cargo update -p ed25519-dalek --precise 2.2.0 || true
           cd ../verifier_registry
           cargo generate-lockfile
-          cargo update -p ed25519-dalek --precise 2.1.0
+          cargo update -p ed25519-dalek@3.0.0 --precise 2.2.0 || cargo update -p ed25519-dalek --precise 2.2.0 || true
 
       - name: Check GreenLedger Contract
         run: |
