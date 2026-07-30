@@ -407,6 +407,7 @@ mod test {
     #[test]
     fn test_mint_and_buy_workflow() {
         let env = Env::default();
+        env.mock_all_auths();
         let contract_id = env.register_contract(None, GreenLedgerContract);
         let client = GreenLedgerContractClient::new(&env, &contract_id);
 

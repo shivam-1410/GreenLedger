@@ -116,6 +116,7 @@ mod test {
     #[test]
     fn test_verifier_lifecycle() {
         let env = Env::default();
+        env.mock_all_auths();
         let contract_id = env.register_contract(None, VerifierRegistryContract);
         let client = VerifierRegistryContractClient::new(&env, &contract_id);
 
