@@ -1,6 +1,6 @@
 #![no_std]
 use soroban_sdk::{
-    contract, contractclient, contractimpl, contracttype, symbol_short, Address, Bytes, BytesN, Env, String, Symbol, Vec,
+    contract, contractimpl, contracttype, symbol_short, Address, Bytes, BytesN, Env, String,
 };
 
 // Inter-Contract Client Trait for VerifierRegistryContract
@@ -330,7 +330,7 @@ impl GreenLedgerContract {
             .set(&DataKey::Balance(owner.clone(), credit_id), &(balance - amount));
 
         let seq_bytes = Bytes::from_slice(&env, &env.ledger().sequence().to_be_bytes());
-        let hash_bytes: BytesN<32> = env.crypto().sha256(&seq_bytes);
+        let hash_bytes: BytesN<32> = env.crypto().sha256(&seq_bytes).into();
 
         let current_retired: u64 = env
             .storage()
