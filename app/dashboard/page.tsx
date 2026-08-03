@@ -143,7 +143,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Level 1 Direct XLM Payment Section */}
+      {/* Native XLM Payment Section */}
       <SendXlmCard />
 
       {/* Owned Credit Inventory */}

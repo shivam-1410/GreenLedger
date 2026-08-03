@@ -17,12 +17,14 @@ const nextConfig = {
         net: false,
         tls: false,
         child_process: false,
+        'sodium-native': false,
       };
     }
 
     config.ignoreWarnings = [
       { module: /node_modules\/require-addon/ },
       { module: /node_modules\/sodium-native/ },
+      { message: /Critical dependency/ },
     ];
 
     return config;

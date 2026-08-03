@@ -136,7 +136,7 @@ export function SendXlmCard() {
               Send XLM Transaction <Sparkles className="h-4 w-4 text-emerald-400" />
             </h3>
             <p className="text-xs text-slate-400">
-              Level 1 Requirement: Execute native XLM payment on Stellar Testnet
+              Transfer native XLM payments directly on Stellar Testnet Horizon
             </p>
           </div>
         </div>
