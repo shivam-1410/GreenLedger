@@ -10,9 +10,15 @@ import {
   Operation,
   Asset,
   Networks,
+  StrKey,
 } from '@stellar/stellar-sdk';
 import { STELLAR_CONFIG, MOCK_PROJECTS } from './config';
 import { CarbonCredit, PlatformStats } from '@/types';
+
+export function isValidStellarAddress(address: string): boolean {
+  if (!address) return false;
+  return StrKey.isValidEd25519PublicKey(address.trim());
+}
 
 export const sorobanServer = new rpc.Server(STELLAR_CONFIG.rpcUrl);
 export const horizonServer = new Horizon.Server(STELLAR_CONFIG.horizonUrl);

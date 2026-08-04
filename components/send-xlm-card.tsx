@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useWalletStore } from '@/store/useWalletStore';
 import { useAppStore } from '@/store/useAppStore';
 import { Button } from './ui/button';
-import { buildXlmPaymentTxXdr, submitHorizonTransaction, fundAccountWithFriendbot } from '@/lib/stellar';
+import { buildXlmPaymentTxXdr, submitHorizonTransaction, fundAccountWithFriendbot, isValidStellarAddress } from '@/lib/stellar';
 import { truncateAddress, getExplorerTxUrl, formatNumber } from '@/lib/utils';
 import {
   Send,
@@ -23,7 +23,7 @@ export function SendXlmCard() {
   const { isConnected, publicKey, walletType, xlmBalance, refreshBalance, signTx } = useWalletStore();
   const { addTransaction, updateTransaction } = useAppStore();
 
-  const [destination, setDestination] = useState('GA2HGBJIJKIH625XZUSGDVI26T6ZIZS2Y2TII7WAK5XTHYML7J4LQLA4');
+  const [destination, setDestination] = useState('GBTPRNTEYVR33U3NZR5WG7GINLGC6RPUSLBJZWIM2WLABSWNZNLL76G5');
   const [amount, setAmount] = useState('10');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFunding, setIsFunding] = useState(false);
@@ -58,8 +58,8 @@ export function SendXlmCard() {
       return;
     }
 
-    if (!destination || destination.trim().length < 50 || !destination.startsWith('G')) {
-      toast.error('Please enter a valid Stellar G... public key address.');
+    if (!isValidStellarAddress(destination)) {
+      toast.error('Please enter a valid 56-character Stellar public key (starts with G).');
       return;
     }
 
