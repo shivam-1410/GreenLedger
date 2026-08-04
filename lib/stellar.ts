@@ -52,17 +52,31 @@ export async function buildXlmPaymentTxXdr(
   amountXlm: string
 ): Promise<string> {
   const account = await horizonServer.loadAccount(senderPublicKey);
-  const tx = new TransactionBuilder(account, {
-    fee: '100',
-    networkPassphrase: STELLAR_CONFIG.networkPassphrase,
-  })
-    .addOperation(
-      Operation.payment({
+
+  let destinationExists = false;
+  try {
+    await horizonServer.loadAccount(destinationPublicKey);
+    destinationExists = true;
+  } catch (err) {
+    destinationExists = false;
+  }
+
+  const op = destinationExists
+    ? Operation.payment({
         destination: destinationPublicKey,
         asset: Asset.native(),
         amount: amountXlm,
       })
-    )
+    : Operation.createAccount({
+        destination: destinationPublicKey,
+        startingBalance: amountXlm,
+      });
+
+  const tx = new TransactionBuilder(account, {
+    fee: '100',
+    networkPassphrase: STELLAR_CONFIG.networkPassphrase,
+  })
+    .addOperation(op)
     .setTimeout(300)
     .build();
 
