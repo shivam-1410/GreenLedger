@@ -23,7 +23,7 @@ export function SendXlmCard() {
   const { isConnected, publicKey, walletType, xlmBalance, refreshBalance, signTx } = useWalletStore();
   const { addTransaction, updateTransaction } = useAppStore();
 
-  const [destination, setDestination] = useState('GBV2X5Z6P7E5K3J7X9P02L9R4E91M822GBC4M822GDA7KL9P0');
+  const [destination, setDestination] = useState('GA2HGBJIJKIH625XZUSGDVI26T6ZIZS2Y2TII7WAK5XTHYML7J4LQLA4');
   const [amount, setAmount] = useState('10');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFunding, setIsFunding] = useState(false);
