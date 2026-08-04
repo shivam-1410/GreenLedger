@@ -21,6 +21,14 @@
 
 ---
 
+## 📸 Application Screenshots
+
+| 1. Dashboard & Wallet Overview | 2. Carbon Credit Marketplace | 3. On-Chain XLM Transaction Flow |
+| :---: | :---: | :---: |
+| ![Dashboard & Wallet Overview](public/screenshots/screenshot-1.png) | ![Carbon Credit Marketplace](public/screenshots/screenshot-2.png) | ![On-Chain XLM Transaction Flow](public/screenshots/screenshot-3.png) |
+
+---
+
 ## 📐 Protocol Architecture & Inter-Contract Flow
 
 ```mermaid
