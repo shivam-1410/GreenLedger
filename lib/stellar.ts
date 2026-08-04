@@ -63,7 +63,7 @@ export async function buildXlmPaymentTxXdr(
         amount: amountXlm,
       })
     )
-    .setTimeout(30)
+    .setTimeout(300)
     .build();
 
   return tx.toXDR();
