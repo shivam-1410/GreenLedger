@@ -21,7 +21,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Protocol</h4>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Protocol Modules</h4>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link href="/marketplace" className="hover:text-emerald-400 transition-colors">
@@ -34,12 +34,38 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/onboarding" className="hover:text-emerald-400 transition-colors">
+                  Guided User Onboarding Wizard
+                </Link>
+              </li>
+              <li>
+                <Link href="/analytics" className="hover:text-emerald-400 transition-colors">
+                  Product Analytics & SLA Telemetry
+                </Link>
+              </li>
+              <li>
+                <Link href="/feedback" className="hover:text-emerald-400 transition-colors">
+                  User Feedback & CSAT Collector
+                </Link>
+              </li>
+              <li>
+                <Link href="/proof" className="hover:text-emerald-400 transition-colors">
+                  Proof of 10+ Wallet Interactions
+                </Link>
+              </li>
+              <li>
+                <Link href="/governance" className="hover:text-emerald-400 transition-colors">
+                  Verifier Governance Portal
+                </Link>
+              </li>
+              <li>
                 <Link href="/activity" className="hover:text-emerald-400 transition-colors">
                   Contract Event Stream
                 </Link>
               </li>
             </ul>
           </div>
+
 
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Stellar Ecosystem</h4>

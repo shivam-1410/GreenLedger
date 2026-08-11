@@ -29,6 +29,23 @@ const nextConfig = {
 
     return config;
   },
+  async redirects() {
+    return [
+      { source: '/user-onboarding', destination: '/onboarding', permanent: true },
+      { source: '/wizard', destination: '/onboarding', permanent: true },
+      { source: '/onboard', destination: '/onboarding', permanent: true },
+      { source: '/monitoring', destination: '/analytics', permanent: true },
+      { source: '/telemetry', destination: '/analytics', permanent: true },
+      { source: '/metrics', destination: '/analytics', permanent: true },
+      { source: '/feedbacks', destination: '/feedback', permanent: true },
+      { source: '/reviews', destination: '/feedback', permanent: true },
+      { source: '/user-feedback', destination: '/feedback', permanent: true },
+      { source: '/proofs', destination: '/proof', permanent: true },
+      { source: '/user-proofs', destination: '/proof', permanent: true },
+      { source: '/interactions', destination: '/proof', permanent: true },
+    ];
+  },
 };
 
 module.exports = nextConfig;
+
