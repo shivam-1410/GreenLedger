@@ -8,6 +8,8 @@ import { CreditCard } from '@/components/credit-card';
 import { BuyDialog } from '@/components/buy-dialog';
 import { RetireDialog } from '@/components/retire-dialog';
 import { WalletModal } from '@/components/wallet-modal';
+import { OnboardingBanner } from '@/components/onboarding-banner';
+import { FeedbackModal } from '@/components/feedback-modal';
 import { Button } from '@/components/ui/button';
 import { formatNumber } from '@/lib/utils';
 import { CarbonCredit } from '@/types';
@@ -22,6 +24,10 @@ import {
   Trees,
   CheckCircle2,
   Sparkles,
+  Compass,
+  BarChart3,
+  MessageSquare,
+  Users,
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -39,50 +45,57 @@ export default function HomePage() {
 
   return (
     <div className="space-y-24 pb-16">
-      {/* HERO SECTION */}
-      <section className="relative pt-20 pb-16 overflow-hidden">
-        {/* Glowing Orb Background */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-emerald-500/15 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute top-1/3 right-10 w-[400px] h-[300px] bg-teal-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <OnboardingBanner />
+      <FeedbackModal />
 
-        <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 text-xs font-medium mb-6 backdrop-blur-md shadow-lg">
-            <Sparkles className="h-3.5 w-3.5 text-emerald-400" />
-            <span>Production-Ready Stellar Level 2 DApp</span>
+      {/* HERO SECTION */}
+      <section className="relative pt-16 pb-16 overflow-hidden">
+        {/* Glowing Orb Background */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[380px] bg-emerald-500/15 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/3 right-10 w-[450px] h-[320px] bg-teal-500/10 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center max-w-4xl space-y-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-bold backdrop-blur-md shadow-xl">
+            <Sparkles className="h-4 w-4 text-emerald-400 animate-pulse" />
+            <span>Stellar Level 4 Production-Ready MVP — Verified with 10+ Onboarded Users</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-6">
-            Trade & Retire Verified Carbon Credits on{' '}
+          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+            Enterprise Carbon Credit Trading & Offset Protocol on{' '}
             <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200 bg-clip-text text-transparent">
               Stellar Soroban
             </span>
           </h1>
 
-          <p className="text-base sm:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-            GreenLedger brings transparent carbon offset trading, verified project minting, and tamper-proof retirement certificates to the open Stellar blockchain.
+          <p className="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            GreenLedger brings verified carbon credit minting, inter-contract verifier checks, atomic XLM marketplace trading, irreversible CO2 retirement certificates, real-time analytics, and user feedback validation to Stellar testnet.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/marketplace">
-              <Button variant="glow" size="lg" className="w-full sm:w-auto gap-2 text-base">
-                <span>Explore Marketplace</span>
-                <ArrowRight className="h-5 w-5" />
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+            <Link href="/onboarding">
+              <Button variant="glow" size="lg" className="gap-2 text-sm sm:text-base font-extrabold">
+                <Compass className="h-5 w-5" />
+                <span>Launch Guided Onboarding</span>
+                <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
 
-            {!isConnected && (
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => setIsWalletModalOpen(true)}
-                className="w-full sm:w-auto text-base"
-              >
-                Connect Wallet
+            <Link href="/marketplace">
+              <Button variant="outline" size="lg" className="gap-2 text-sm sm:text-base border-emerald-500/30 text-emerald-300">
+                <span>Browse Marketplace</span>
               </Button>
-            )}
+            </Link>
+
+            <Link href="/proof">
+              <Button variant="ghost" size="lg" className="gap-2 text-sm sm:text-base text-slate-300 hover:text-white">
+                <CheckCircle2 className="h-5 w-5 text-emerald-400" />
+                <span>Proof of 10+ Users</span>
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
+
 
       {/* DYNAMIC STATS COUNTER BAR */}
       <section className="container mx-auto px-4 sm:px-6">

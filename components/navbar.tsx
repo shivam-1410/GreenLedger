@@ -18,6 +18,10 @@ import {
   ShieldCheck,
   Menu,
   X,
+  Compass,
+  BarChart3,
+  MessageSquare,
+  CheckCircle2,
 } from 'lucide-react';
 
 export function Navbar() {
@@ -31,9 +35,14 @@ export function Navbar() {
     { href: '/marketplace', label: 'Marketplace', icon: ShoppingBag },
     { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/governance', label: 'Governance', icon: ShieldCheck },
-    { href: '/activity', label: 'Activity Stream', icon: Activity },
+    { href: '/onboarding', label: 'Onboarding', icon: Compass },
+    { href: '/analytics', label: 'Analytics', icon: BarChart3 },
+    { href: '/feedback', label: 'Feedback', icon: MessageSquare },
+    { href: '/proof', label: 'Proof 10+', icon: CheckCircle2 },
+    { href: '/activity', label: 'Activity', icon: Activity },
     { href: '/transactions', label: 'Tx History', icon: History },
   ];
+
 
   return (
     <>

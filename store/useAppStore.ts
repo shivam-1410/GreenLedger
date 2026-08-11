@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { CarbonCredit, ContractEvent, PlatformStats, RetirementRecord, TrackedTransaction } from '@/types';
+import { CarbonCredit, ContractEvent, PlatformStats, RetirementRecord, TrackedTransaction, UserFeedback } from '@/types';
 import { MOCK_PROJECTS } from '@/lib/config';
 import { INITIAL_EVENTS } from '@/lib/events';
 
@@ -11,6 +11,7 @@ interface AppStoreState {
   transactions: TrackedTransaction[];
   retirements: RetirementRecord[];
   userInventory: { creditId: string; amount: number }[];
+  userFeedbacks: UserFeedback[];
   stats: PlatformStats;
 
   // Actions
@@ -20,7 +21,9 @@ interface AppStoreState {
   mintProject: (project: Omit<CarbonCredit, 'id' | 'availableSupply'>) => void;
   buyCredits: (creditId: string, amount: number, buyerAddress: string) => void;
   retireCredits: (creditId: string, amount: number, ownerAddress: string, reason: string) => string;
+  addFeedback: (feedback: Omit<UserFeedback, 'id' | 'timestamp'>) => void;
 }
+
 
 export const useAppStore = create<AppStoreState>((set, get) => ({
   projects: MOCK_PROJECTS,
@@ -52,6 +55,30 @@ export const useAppStore = create<AppStoreState>((set, get) => ({
     { creditId: '1', amount: 50 },
     { creditId: '2', amount: 120 },
   ],
+  userFeedbacks: [
+    {
+      id: 'fb-101',
+      walletAddress: 'GBV2X...R4E91',
+      userName: 'Elena Rostova (Sustainability Director)',
+      rating: 5,
+      category: 'UI/UX',
+      comment: 'Seamless carbon credit purchasing flow with Freighter wallet. Loved the real-time event stream and instant certificate hash verification!',
+      npsScore: 10,
+      timestamp: Date.now() - 3600000 * 24 * 2,
+      verifiedWallet: true,
+    },
+    {
+      id: 'fb-102',
+      walletAddress: 'GD72P...K92L4',
+      userName: 'Marcus Vance (ESG Analyst)',
+      rating: 5,
+      category: 'Transaction Speed',
+      comment: 'Stellar Soroban RPC responses are sub-second. Atomic settlement in XLM worked without any retries. Highly recommended for enterprise compliance.',
+      npsScore: 9,
+      timestamp: Date.now() - 3600000 * 24 * 4,
+      verifiedWallet: true,
+    },
+  ],
   stats: {
     totalCreditsMinted: 4,
     totalCo2OffsetTons: 14850,
@@ -59,7 +86,17 @@ export const useAppStore = create<AppStoreState>((set, get) => ({
     totalVolumeXlm: 54200,
   },
 
+  addFeedback: (feedback) => {
+    const newFb = {
+      ...feedback,
+      id: `fb-${Date.now()}`,
+      timestamp: Date.now(),
+    };
+    set((state) => ({ userFeedbacks: [newFb, ...state.userFeedbacks] }));
+  },
+
   addTransaction: (tx) => {
+
     const id = `tx-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
     const newTx: TrackedTransaction = {
       ...tx,

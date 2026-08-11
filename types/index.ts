@@ -84,3 +84,53 @@ export interface ContractEvent {
   priceXlm?: number;
   txHash: string;
 }
+
+export type FeedbackCategory = 'UI/UX' | 'Transaction Speed' | 'Wallet Connection' | 'Documentation' | 'Feature Request' | 'General';
+
+export interface UserFeedback {
+  id: string;
+  walletAddress: string;
+  userName: string;
+  rating: number;
+  category: FeedbackCategory;
+  comment: string;
+  npsScore: number;
+  timestamp: number;
+  verifiedWallet: boolean;
+}
+
+export interface AnalyticsTelemetry {
+  rpcLatencyMs: number;
+  activeUsers24h: number;
+  totalWalletInteractions: number;
+  contractCallsTotal: number;
+  uptimePercentage: number;
+  errorRatePercentage: number;
+  totalCo2Offset: number;
+  totalXlmVolume: number;
+  conversionFunnel: { step: string; count: number; percentage: number }[];
+  topInteractions: { action: string; count: number }[];
+  recentErrorLogs: { timestamp: number; source: string; message: string; code: string }[];
+}
+
+export interface UserInteractionProof {
+  id: string;
+  userNumber: number;
+  walletAddress: string;
+  walletLabel: string;
+  action: string;
+  txHash: string;
+  ledgerSequence: number;
+  contractId: string;
+  timestamp: number;
+  verified: boolean;
+  stellarExpertUrl: string;
+}
+
+export interface OnboardingStep {
+  id: number;
+  title: string;
+  description: string;
+  completed: boolean;
+}
+

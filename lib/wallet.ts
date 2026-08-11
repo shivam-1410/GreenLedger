@@ -277,3 +277,18 @@ export function disconnectWallet() {
     localStorage.removeItem('green_ledger_demo_secret');
   }
 }
+
+export async function fundWithFriendbot(publicKey: string): Promise<{ success: boolean; txHash?: string; error?: string }> {
+  try {
+    const friendbotUrl = `https://friendbot.stellar.org?addr=${encodeURIComponent(publicKey)}`;
+    const res = await fetch(friendbotUrl);
+    if (res.ok) {
+      const data: any = await res.json();
+      return { success: true, txHash: data.hash || 'friendbot-tx-success' };
+    }
+    return { success: false, error: 'Friendbot request returned status ' + res.status };
+  } catch (err: any) {
+    return { success: false, error: err.message || 'Friendbot connection error' };
+  }
+}
+
