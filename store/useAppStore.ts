@@ -145,7 +145,7 @@ export const useAppStore = create<AppStoreState>((set, get) => ({
       projectName: newP.projectName,
       co2Tons: newP.co2Tons,
       amount: newP.totalSupply,
-      txHash: '0x' + Math.random().toString(16).substring(2, 34),
+      txHash: Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join(''),
     });
   },
 
@@ -194,13 +194,14 @@ export const useAppStore = create<AppStoreState>((set, get) => ({
       amount,
       co2Tons: amount,
       priceXlm: p?.pricePerTon,
-      txHash: '0x' + Math.random().toString(16).substring(2, 34),
+      txHash: Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join(''),
     });
   },
 
   retireCredits: (creditId, amount, ownerAddress, reason) => {
-    const certHash = '0x' + Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
+    const certHash = Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
     const certId = `cert-${Math.floor(100000 + Math.random() * 900000)}`;
+
 
     const p = get().projects.find((pr) => pr.id === creditId);
     const projectName = p?.projectName || 'Carbon Project';

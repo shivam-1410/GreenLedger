@@ -19,8 +19,10 @@ export function formatNumber(value: number, decimals = 2): string {
 }
 
 export function getExplorerTxUrl(hash: string): string {
-  return `https://stellar.expert/explorer/testnet/tx/${hash}`;
+  const cleanHash = hash ? hash.replace(/^0x/i, '') : '';
+  return `https://stellar.expert/explorer/testnet/tx/${cleanHash}`;
 }
+
 
 export function getExplorerAccountUrl(address: string): string {
   return `https://stellar.expert/explorer/testnet/account/${address}`;

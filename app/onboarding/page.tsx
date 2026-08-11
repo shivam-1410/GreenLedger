@@ -76,8 +76,9 @@ export default function OnboardingPage() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1500));
       buyCredits(selectedProjectId, buyAmount, publicKey);
-      const mockHash = '0x' + Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
+      const mockHash = Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
       setTradeSuccessHash(mockHash);
+
       toast.success(`Successfully purchased ${buyAmount} carbon credits on Stellar Testnet!`);
     } catch (error) {
       toast.error('Trade execution failed.');

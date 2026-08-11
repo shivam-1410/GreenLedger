@@ -60,7 +60,7 @@ export default function ProofPage() {
     setIsSimulating(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 1800));
-      const hash = '0x' + Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
+      const hash = Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
       setSimulatedTxHash(hash);
 
       const newProof: UserInteractionProof = {
@@ -76,6 +76,7 @@ export default function ProofPage() {
         verified: true,
         stellarExpertUrl: `https://stellar.expert/explorer/testnet/tx/${hash}`,
       };
+
 
       setProofs([newProof, ...proofs]);
       toast.success('Live Wallet Interaction Proof recorded on Stellar Testnet!');
