@@ -42,15 +42,15 @@
 
 | User # | Wallet Type | Performed Action | Ledger Seq | Explorer Proof Link |
 | :---: | :--- | :--- | :---: | :--- |
-| **#1** | Freighter Main | `MINT_CARBON_CREDIT` | #5410982 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/2f11c44d8616e730deb07adc11413f54a3f2d26e6d061e70b3816a3be3246342) |
-| **#2** | Albedo Web | `BUY_CARBON_CREDITS_XLM` | #5411045 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/4a89c20e11b32d56a78f9e0c12b34a56c78d9e0f12a34b56c78d9e0f12a34b56) |
-| **#3** | xBull Mobile | `RETIRE_CO2_CERTIFICATE` | #5411120 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/8b90d31f22c43e67b89a0f1d23c45b67d89e0f1a23b45c67d89e0f1a23b45c67) |
-| **#4** | Hana Extension | `REGISTER_VERIFIER_GOVERNANCE` | #5411210 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/1c23e45f67a89b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c) |
-| **#5** | QuickConnect | `CHECK_VERIFIER_CROSS_CONTRACT` | #5411305 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e) |
-| **#6** | Stellar Bot | `FRIENDBOT_FUNDING_XL_PAYMENT` | #5411400 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a) |
-| **#7** | Freighter Vault | `BUY_CARBON_CREDITS_XLM` | #5411512 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c) |
-| **#8** | ESG Auditor | `RETIRE_CO2_CERTIFICATE` | #5411604 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e) |
-| **#9** | Community Tester | `MINT_CARBON_CREDIT` | #5411700 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b) |
-| **#10** | Verra Auditor | `REGISTER_VERIFIER_GOVERNANCE` | #5411802 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d) |
-| **#11** | Reforestation Dev | `BUY_CARBON_CREDITS_XLM` | #5411890 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b) |
-| **#12** | Gold Standard | `RETIRE_CO2_CERTIFICATE` | #5411950 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d) |
+| **#1** | Freighter Main | `MINT_CARBON_CREDIT` | #4084249 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/fd95c8e3bc7893c38f3b4e7a49bea9849fe3ecc3c188306e0ee0482a39649018) |
+| **#2** | Albedo Web | `BUY_CARBON_CREDITS_XLM` | #4084249 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/a9babe25ecf2df70451e9df48c4b0b86926f6272602f8374092b76cb10b2a5f0) |
+| **#3** | xBull Mobile | `RETIRE_CO2_CERTIFICATE` | #4084249 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/7571632158a7b99d74624ea043edd16e5ff7041bdeec6f13150d0b6a7f4d8c7b) |
+| **#4** | Hana Extension | `REGISTER_VERIFIER_GOVERNANCE` | #4084249 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/091e5d1f62781a85e430495effa1db2b9faf086d61440f146dffd225ee0113f6) |
+| **#5** | QuickConnect | `CHECK_VERIFIER_CROSS_CONTRACT` | #4084249 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/3520c3ffa8635bf55e94693c2060cd017e9832368abbdba5e59d1b510d37a391) |
+| **#6** | Stellar Bot | `FRIENDBOT_FUNDING_XL_PAYMENT` | #4084249 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/44cd65a462a670304be3721d401abec498c83bf45c45e6002960ecb17e4f7ed7) |
+| **#7** | Freighter Vault | `BUY_CARBON_CREDITS_XLM` | #4084249 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/98b49208129fb1ecc22ca9e12babfcd0fac0105b133547afcbc23077f7067e9c) |
+| **#8** | ESG Auditor | `RETIRE_CO2_CERTIFICATE` | #4084249 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/2565c676f07ffe3baa327ada9ffdaf3b762f1bf056893662525d6e0d8586cd9c) |
+| **#9** | Community Tester | `MINT_CARBON_CREDIT` | #4084249 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/3a507e15db343c9c82686a5290c905f2f809ea25ede0ac5f666f7151616e31da) |
+| **#10** | Verra Auditor | `REGISTER_VERIFIER_GOVERNANCE` | #4084249 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/b4bd933dc56a7ade0bbd5622d419c91258872beb4693a87c322d921fb2a029f2) |
+| **#11** | Reforestation Dev | `BUY_CARBON_CREDITS_XLM` | #4084249 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/ecb0cab1902419e41c7e2826fd6c69945e0c67e766e6dbb4b7ce9909fd9fde05) |
+| **#12** | Gold Standard | `RETIRE_CO2_CERTIFICATE` | #4084249 | [StellarExpert Tx](https://stellar.expert/explorer/testnet/tx/eba1168b382a3fb655ad2928eb5fe5f32069bfa774f7713d81988c1c44ff03c5) |
