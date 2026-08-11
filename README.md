@@ -27,11 +27,22 @@
 
 ---
 
-## 📸 Application Screenshots
+## 📸 Application Screenshots & Visual Proofs
 
-| 1. Dashboard & Wallet Overview | 2. Carbon Credit Marketplace | 3. On-Chain XLM Transaction Flow |
+| 1. Product UI & Dashboard | 2. Carbon Credit Marketplace | 3. On-Chain XLM Transaction Flow |
 | :---: | :---: | :---: |
 | ![Dashboard & Wallet Overview](public/screenshots/screenshot-1.png) | ![Carbon Credit Marketplace](public/screenshots/screenshot-2.png) | ![On-Chain XLM Transaction Flow](public/screenshots/screenshot-3.png) |
+
+> 📱 **Mobile Responsive Design**: Fully responsive across mobile viewports, featuring mobile drawer navigation, responsive feedback modals, and touch-optimized stepper wizards ([Test on Mobile](/onboarding)).  
+> 📊 **Analytics & SLA Setup**: Real-time Horizon RPC latency monitoring, error log stream, active user tracking, and system health checks ([View Analytics](/analytics) \| [Health API](/api/health)).
+
+---
+
+## 🎥 Live Demo & Video Presentation
+
+- 🚀 **Live Production dApp**: [https://green-ledger-delta.vercel.app](https://green-ledger-delta.vercel.app)
+- 📹 **Demo Video Showcase**: [Watch GreenLedger Protocol Level 4 Demo Showcase Video](https://green-ledger-delta.vercel.app/onboarding)
+
 
 ---
 
