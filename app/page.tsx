@@ -19,15 +19,12 @@ import {
   Zap,
   Award,
   ArrowRight,
-  TrendingUp,
-  Globe,
-  Trees,
-  CheckCircle2,
   Sparkles,
   Compass,
-  BarChart3,
-  MessageSquare,
-  Users,
+  CheckCircle2,
+  Calculator,
+  SearchCode,
+  Trophy,
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -80,9 +77,10 @@ export default function HomePage() {
               </Button>
             </Link>
 
-            <Link href="/marketplace">
+            <Link href="/calculator">
               <Button variant="outline" size="lg" className="gap-2 text-sm sm:text-base border-emerald-500/30 text-emerald-300">
-                <span>Browse Marketplace</span>
+                <Calculator className="h-4 w-4" />
+                <span>Carbon Calculator</span>
               </Button>
             </Link>
 
@@ -95,7 +93,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
 
       {/* DYNAMIC STATS COUNTER BAR */}
       <section className="container mx-auto px-4 sm:px-6">
@@ -131,6 +128,60 @@ export default function HomePage() {
             </div>
             <span className="text-[11px] text-slate-500">Sub-second Stellar Settlement</span>
           </div>
+        </div>
+      </section>
+
+      {/* NEW LEVEL 4 MODULES SHOWCASE */}
+      <section className="container mx-auto px-4 sm:px-6 space-y-8">
+        <div className="text-center max-w-2xl mx-auto space-y-2">
+          <h2 className="text-3xl font-bold text-white tracking-tight">Level 4 Production Modules</h2>
+          <p className="text-sm text-slate-400">
+            Enterprise tools for carbon auditing, smart contract state inspection, and climate impact rankings.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Link href="/calculator" className="group p-6 rounded-2xl border border-emerald-500/20 bg-slate-900/60 backdrop-blur-md space-y-4 hover:border-emerald-500/50 transition-all">
+            <div className="h-12 w-12 rounded-xl bg-emerald-950/80 border border-emerald-500/40 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
+              <Calculator className="h-6 w-6" />
+            </div>
+            <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">ESG Carbon Calculator</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Calculate flight, cloud compute, electricity, and fleet emissions with real-time EPA factors and instant Soroban credit retirement.
+            </p>
+            <div className="text-xs text-emerald-400 font-semibold flex items-center gap-1">
+              <span>Open Audit Tool</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </div>
+          </Link>
+
+          <Link href="/inspector" className="group p-6 rounded-2xl border border-cyan-500/20 bg-slate-900/60 backdrop-blur-md space-y-4 hover:border-cyan-500/50 transition-all">
+            <div className="h-12 w-12 rounded-xl bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+              <SearchCode className="h-6 w-6" />
+            </div>
+            <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">Soroban Contract Inspector</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Inspect WASM bytecode hashes, public entrypoints, state storage keys, and verifier governance registrations.
+            </p>
+            <div className="text-xs text-cyan-400 font-semibold flex items-center gap-1">
+              <span>Inspect Contracts</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </div>
+          </Link>
+
+          <Link href="/leaderboard" className="group p-6 rounded-2xl border border-amber-500/20 bg-slate-900/60 backdrop-blur-md space-y-4 hover:border-amber-500/50 transition-all">
+            <div className="h-12 w-12 rounded-xl bg-amber-950/80 border border-amber-500/40 flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform">
+              <Trophy className="h-6 w-6" />
+            </div>
+            <h3 className="text-lg font-bold text-white group-hover:text-amber-300 transition-colors">Global ESG Leaderboard</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Rankings of top climate contributors, accredited verifiers, and corporate entities retiring CO2 offset certificates.
+            </p>
+            <div className="text-xs text-amber-400 font-semibold flex items-center gap-1">
+              <span>View Leaderboard</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </div>
+          </Link>
         </div>
       </section>
 
