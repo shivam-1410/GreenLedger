@@ -8,7 +8,6 @@ import { CreditCard } from '@/components/credit-card';
 import { BuyDialog } from '@/components/buy-dialog';
 import { RetireDialog } from '@/components/retire-dialog';
 import { WalletModal } from '@/components/wallet-modal';
-import { OnboardingBanner } from '@/components/onboarding-banner';
 import { FeedbackModal } from '@/components/feedback-modal';
 import { Button } from '@/components/ui/button';
 import { formatNumber } from '@/lib/utils';
@@ -20,8 +19,7 @@ import {
   Award,
   ArrowRight,
   Sparkles,
-  Compass,
-  CheckCircle2,
+  ShoppingBag,
   Calculator,
   SearchCode,
   Trophy,
@@ -42,7 +40,6 @@ export default function HomePage() {
 
   return (
     <div className="space-y-24 pb-16">
-      <OnboardingBanner />
       <FeedbackModal />
 
       {/* HERO SECTION */}
@@ -54,7 +51,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center max-w-4xl space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-bold backdrop-blur-md shadow-xl">
             <Sparkles className="h-4 w-4 text-emerald-400 animate-pulse" />
-            <span>Stellar Level 4 Production-Ready MVP — Verified with 10+ Onboarded Users</span>
+            <span>Decentralized Environmental Asset Trading Protocol</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
@@ -65,14 +62,14 @@ export default function HomePage() {
           </h1>
 
           <p className="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            GreenLedger brings verified carbon credit minting, inter-contract verifier checks, atomic XLM marketplace trading, irreversible CO2 retirement certificates, real-time analytics, and user feedback validation to Stellar testnet.
+            GreenLedger brings verified carbon credit minting, inter-contract verifier checks, atomic XLM marketplace trading, irreversible CO2 retirement certificates, and real-time analytics to Stellar.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-            <Link href="/onboarding">
+            <Link href="/marketplace">
               <Button variant="glow" size="lg" className="gap-2 text-sm sm:text-base font-extrabold">
-                <Compass className="h-5 w-5" />
-                <span>Launch Guided Onboarding</span>
+                <ShoppingBag className="h-5 w-5" />
+                <span>Explore Marketplace</span>
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
@@ -81,13 +78,6 @@ export default function HomePage() {
               <Button variant="outline" size="lg" className="gap-2 text-sm sm:text-base border-emerald-500/30 text-emerald-300">
                 <Calculator className="h-4 w-4" />
                 <span>Carbon Calculator</span>
-              </Button>
-            </Link>
-
-            <Link href="/proof">
-              <Button variant="ghost" size="lg" className="gap-2 text-sm sm:text-base text-slate-300 hover:text-white">
-                <CheckCircle2 className="h-5 w-5 text-emerald-400" />
-                <span>Proof of 10+ Users</span>
               </Button>
             </Link>
           </div>

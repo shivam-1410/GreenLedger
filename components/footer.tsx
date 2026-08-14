@@ -49,11 +49,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/onboarding" className="hover:text-emerald-400 transition-colors">
-                  Guided User Onboarding Wizard
-                </Link>
-              </li>
-              <li>
                 <Link href="/analytics" className="hover:text-emerald-400 transition-colors">
                   Product Analytics & SLA Telemetry
                 </Link>
@@ -61,11 +56,6 @@ export function Footer() {
               <li>
                 <Link href="/feedback" className="hover:text-emerald-400 transition-colors">
                   User Feedback & CSAT Collector
-                </Link>
-              </li>
-              <li>
-                <Link href="/proof" className="hover:text-emerald-400 transition-colors">
-                  Proof of 10+ Wallet Interactions
                 </Link>
               </li>
               <li>

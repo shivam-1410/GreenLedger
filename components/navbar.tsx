@@ -41,10 +41,8 @@ export function Navbar() {
     { href: '/inspector', label: 'Inspector', icon: SearchCode },
     { href: '/leaderboard', label: 'Leaderboard', icon: Trophy },
     { href: '/governance', label: 'Governance', icon: ShieldCheck },
-    { href: '/onboarding', label: 'Onboarding', icon: Compass },
     { href: '/analytics', label: 'Analytics', icon: BarChart3 },
     { href: '/feedback', label: 'Feedback', icon: MessageSquare },
-    { href: '/proof', label: 'Proof 10+', icon: CheckCircle2 },
     { href: '/activity', label: 'Activity', icon: Activity },
     { href: '/transactions', label: 'Tx History', icon: History },
   ];
