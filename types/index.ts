@@ -134,3 +134,44 @@ export interface OnboardingStep {
   completed: boolean;
 }
 
+export interface CarbonCalculatorInput {
+  flightHours: number;
+  cloudNodeHours: number;
+  electricityKwh: number;
+  fleetFuelLiters: number;
+}
+
+export interface CarbonCalculationResult {
+  totalCo2Kg: number;
+  totalCo2Tons: number;
+  recommendedCredits: number;
+  estimatedPriceXlm: number;
+  treesEquivalent: number;
+  breakdown: {
+    flightCo2Kg: number;
+    cloudCo2Kg: number;
+    electricityCo2Kg: number;
+    fleetCo2Kg: number;
+  };
+}
+
+export interface LeaderboardEntry {
+  rank: number;
+  walletAddress: string;
+  displayName: string;
+  totalRetiredTons: number;
+  totalXlmSpent: number;
+  badges: string[];
+  lastActive: number;
+  verifiedOrg: boolean;
+}
+
+export interface SorobanContractInspection {
+  contractId: string;
+  contractName: string;
+  wasmHash: string;
+  deployedLedger: number;
+  status: 'ACTIVE' | 'GOVERNANCE_VERIFIED';
+  totalEvents: number;
+  functions: string[];
+}
