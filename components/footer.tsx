@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Leaf, ExternalLink, ShieldCheck, Github } from 'lucide-react';
+import { Leaf, ExternalLink, ShieldCheck } from 'lucide-react';
 import { STELLAR_CONFIG } from '@/lib/config';
 
 export function Footer() {
@@ -26,6 +26,21 @@ export function Footer() {
               <li>
                 <Link href="/marketplace" className="hover:text-emerald-400 transition-colors">
                   Carbon Credit Marketplace
+                </Link>
+              </li>
+              <li>
+                <Link href="/calculator" className="hover:text-emerald-400 transition-colors">
+                  ESG Carbon Audit Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/inspector" className="hover:text-emerald-400 transition-colors">
+                  Soroban Contract Inspector
+                </Link>
+              </li>
+              <li>
+                <Link href="/leaderboard" className="hover:text-emerald-400 transition-colors">
+                  Global ESG Impact Leaderboard
                 </Link>
               </li>
               <li>
@@ -58,14 +73,8 @@ export function Footer() {
                   Verifier Governance Portal
                 </Link>
               </li>
-              <li>
-                <Link href="/activity" className="hover:text-emerald-400 transition-colors">
-                  Contract Event Stream
-                </Link>
-              </li>
             </ul>
           </div>
-
 
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Stellar Ecosystem</h4>
@@ -128,7 +137,7 @@ export function Footer() {
           <p>© 2026 GreenLedger Protocol. Built with Next.js 15, StellarWalletsKit & Soroban SDK.</p>
           <div className="flex items-center gap-1 text-emerald-400">
             <ShieldCheck className="h-4 w-4 text-emerald-500" />
-            <span>Stellar Level 2 Certified Architecture</span>
+            <span>Stellar Level 4 Production MVP Certified</span>
           </div>
         </div>
       </div>
