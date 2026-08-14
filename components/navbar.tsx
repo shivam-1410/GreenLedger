@@ -22,6 +22,9 @@ import {
   BarChart3,
   MessageSquare,
   CheckCircle2,
+  Calculator,
+  SearchCode,
+  Trophy,
 } from 'lucide-react';
 
 export function Navbar() {
@@ -34,6 +37,9 @@ export function Navbar() {
     { href: '/', label: 'Home', icon: Leaf },
     { href: '/marketplace', label: 'Marketplace', icon: ShoppingBag },
     { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { href: '/calculator', label: 'Calculator', icon: Calculator },
+    { href: '/inspector', label: 'Inspector', icon: SearchCode },
+    { href: '/leaderboard', label: 'Leaderboard', icon: Trophy },
     { href: '/governance', label: 'Governance', icon: ShieldCheck },
     { href: '/onboarding', label: 'Onboarding', icon: Compass },
     { href: '/analytics', label: 'Analytics', icon: BarChart3 },
@@ -42,7 +48,6 @@ export function Navbar() {
     { href: '/activity', label: 'Activity', icon: Activity },
     { href: '/transactions', label: 'Tx History', icon: History },
   ];
-
 
   return (
     <>
@@ -64,7 +69,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-xl border border-slate-800/80">
+          <nav className="hidden lg:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-xl border border-slate-800/80 overflow-x-auto max-w-2xl">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
@@ -72,7 +77,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                     isActive
                       ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shadow-sm'
                       : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
@@ -140,7 +145,7 @@ export function Navbar() {
 
         {/* Mobile Navigation Drawer */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden p-4 border-t border-slate-800 bg-slate-950/95 backdrop-blur-2xl space-y-2 animate-in slide-in-from-top-2">
+          <div className="lg:hidden p-4 border-t border-slate-800 bg-slate-950/95 backdrop-blur-2xl space-y-2 animate-in slide-in-from-top-2 max-h-[80vh] overflow-y-auto">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
