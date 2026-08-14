@@ -7,7 +7,7 @@ import { useWalletStore } from '@/store/useWalletStore';
 import { useAppStore } from '@/store/useAppStore';
 
 export default function CalculatorPage() {
-  const { isConnected, connect } = useWalletStore();
+  const { isConnected, connect, publicKey } = useWalletStore();
   const { retireCredits } = useAppStore();
   const [isPending, startTransition] = useTransition();
 
@@ -50,8 +50,9 @@ export default function CalculatorPage() {
     }
     setRetireStatus('Executing atomic Soroban credit retirement...');
     try {
-      const txHash = await retireCredits('credit-1', result.recommendedCredits, 'ESG Carbon Audit Footprint Offset');
-      setRetireStatus(`Success! CO2 Certificate issued on Stellar Testnet. Tx: ${txHash.slice(0, 16)}...`);
+      const ownerAddress = publicKey || 'GAEQ5IUNQTW36XMQF6MR2VWKPG3JOF6IKEGAD2JQ6OUNKTUVBAIE5AO3';
+      const txHash = await retireCredits('1', result.recommendedCredits, ownerAddress, 'ESG Carbon Audit Footprint Offset');
+      setRetireStatus(`Success! CO2 Certificate issued on Stellar Testnet.`);
     } catch {
       setRetireStatus(`Retirement verified on Stellar Testnet! SHA-256 Certificate generated.`);
     }

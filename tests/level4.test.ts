@@ -4,7 +4,7 @@ import { PROOF_OF_INTERACTIONS } from '../lib/proofs';
 describe('Stellar Level 4 Production MVP Test Suite', () => {
   it('should satisfy minimum 10+ real user wallet interaction proofs requirement', () => {
     expect(PROOF_OF_INTERACTIONS.length).toBeGreaterThanOrEqual(10);
-    expect(PROOF_OF_INTERACTIONS.length).toBe(12);
+    expect(PROOF_OF_INTERACTIONS.length).toBeGreaterThanOrEqual(17);
   });
 
   it('should verify all proof records contain valid Stellar addresses and transaction hashes', () => {
