@@ -43,9 +43,14 @@ const nextConfig = {
       { source: '/proofs', destination: '/proof', permanent: true },
       { source: '/user-proofs', destination: '/proof', permanent: true },
       { source: '/interactions', destination: '/proof', permanent: true },
+      { source: '/carbon-calculator', destination: '/calculator', permanent: true },
+      { source: '/carbon-audit', destination: '/calculator', permanent: true },
+      { source: '/contract-inspector', destination: '/inspector', permanent: true },
+      { source: '/soroban-inspector', destination: '/inspector', permanent: true },
+      { source: '/impact-leaderboard', destination: '/leaderboard', permanent: true },
+      { source: '/top-offsetters', destination: '/leaderboard', permanent: true },
     ];
   },
 };
 
 module.exports = nextConfig;
-
