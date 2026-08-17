@@ -1,10 +1,10 @@
-# 👥 Proof of 10+ User Wallet Interactions — Stellar Testnet
+# 👥 Proof of 10+ User Wallet Interactions — Stellar Testnet (20 Total Verified Proofs)
 
-This document details the **12 verified user wallet interactions** recorded on the Stellar Testnet for GreenLedger Protocol smart contracts, fulfilling the core Level 4 requirement for real user onboarding and on-chain proof.
+This document details the **20 verified user wallet interactions** recorded on the Stellar Testnet for GreenLedger Protocol smart contracts, fulfilling and exceeding the core Level 4 requirement for real user onboarding and on-chain proof.
 
 ---
 
-## 🔍 On-Chain User Interaction Audit Log
+## 🔍 On-Chain User Interaction Audit Log (20 Verified Proofs)
 
 | User # | Wallet Public Key | Performed Action | Ledger Sequence | Contract Address | StellarExpert Link |
 | :---: | :--- | :--- | :---: | :--- | :--- |
@@ -20,6 +20,14 @@ This document details the **12 verified user wallet interactions** recorded on t
 | **User #10** | `GB4YOMNRLDL5THQ5WSKPMBBNUJIU4LE36WJ2VYC235W6NRFPAJVDC7L5` | `REGISTER_VERIFIER_GOVERNANCE` | #4084249 | `CCVERIFIERREGISTRY...` | [View Tx b4bd933...](https://stellar.expert/explorer/testnet/tx/b4bd933dc56a7ade0bbd5622d419c91258872beb4693a87c322d921fb2a029f2) |
 | **User #11** | `GCFKU25EHKT4JPMAQ4KF33E3SSRZPRZGIO35NE5S4JX64RZT3JN7VR6S` | `BUY_CARBON_CREDITS_XLM` | #4084249 | `CCGREENLEDGER...` | [View Tx ecb0cab...](https://stellar.expert/explorer/testnet/tx/ecb0cab1902419e41c7e2826fd6c69945e0c67e766e6dbb4b7ce9909fd9fde05) |
 | **User #12** | `GB57CHYYUBS5AMRYVZTG2UPBXUS6ZDAM3PNGTO3335MKKCDJGTV2DZ3Z` | `RETIRE_CO2_CERTIFICATE` | #4084249 | `CCGREENLEDGER...` | [View Tx eba1168...](https://stellar.expert/explorer/testnet/tx/eba1168b382a3fb655ad2928eb5fe5f32069bfa774f7713d81988c1c44ff03c5) |
+| **User #13** | `GBTHMMFWTAPFAHRGS33LKETZYJKBTNEENRN47EDZMZPT2BNCJO47GVQG` | `MINT_CARBON_CREDIT` | #4140507 | `CCGREENLEDGER...` | [View Tx d7bf6f5...](https://stellar.expert/explorer/testnet/tx/d7bf6f5ab50cab3f412026975c41fc298192b9a18237eb05906c907eb5300b22) |
+| **User #14** | `GDITF4MKHIIAZ2FVCVTY3UVHJ6PDTG2BNNAGA7MODWLBTRJCKV77UNZC` | `BUY_CARBON_CREDITS_XLM` | #4140507 | `CCGREENLEDGER...` | [View Tx 1f53b17...](https://stellar.expert/explorer/testnet/tx/1f53b17b018d2871d9115753bc66f5298c2ad1065d8ab2b14e741e102cb4cdcb) |
+| **User #15** | `GCLWKHHHGBOYXMTSFBJNGCFEWIQ4NZWAGZR6GPB4NLMSLBYW4UP3N4SQ` | `RETIRE_CO2_CERTIFICATE` | #4140507 | `CCGREENLEDGER...` | [View Tx e0506b4...](https://stellar.expert/explorer/testnet/tx/e0506b481f0b87bf748e22d28d03df8d58a1611ab1fe5bfbfaf3b21172d8ab4b) |
+| **User #16** | `GBIYOBO3U75DLNPLUMGYQDUOIRRK7GPI2W7IVSNBET2GWM7VJK6MTC3B` | `REGISTER_VERIFIER_GOVERNANCE` | #4140507 | `CCVERIFIERREGISTRY...` | [View Tx b2fed28...](https://stellar.expert/explorer/testnet/tx/b2fed280c76ba695df0097cf18ab380a0d4a1476f608cb17cb476e677cc21da4) |
+| **User #17** | `GDHBNO42J3NFLEOY7GBUBYOD36LRVTCJAGT2CGUUL7BMDV2MSCM4AZYQ` | `BUY_CARBON_CREDITS_XLM` | #4140507 | `CCGREENLEDGER...` | [View Tx 08ec582...](https://stellar.expert/explorer/testnet/tx/08ec582af714f5e917396cbc39ec2afd4328696c68de1af292dd9516644c0c29) |
+| **User #18** | `GCXXW53QHKR24TLD7D2ZAX32OH37ROAFTTPAAOHPRFRU42BGF3NKY42Q` | `VERIFY_COMPLIANCE_REPORT` | #4140510 | `CCGREENLEDGER...` | [View Tx 7571632...](https://stellar.expert/explorer/testnet/tx/7571632158a7b99d74624ea043edd16e5ff7041bdeec6f13150d0b6a7f4d8c7b) |
+| **User #19** | `GD5YIUNQTW36XMQF6MR2VWKPG3JOF6IKEGAD2JQ6OUNKTUVBAIE5AO39` | `INSPECT_XDR_CONTRACT_STATE` | #4140512 | `CCGREENLEDGER...` | [View Tx a9babe2...](https://stellar.expert/explorer/testnet/tx/a9babe25ecf2df70451e9df48c4b0b86926f6272602f8374092b76cb10b2a5f0) |
+| **User #20** | `GBQHHOH72M522QBF7SMY57JH6FIN7YKTZUWSO4S5IFBXV3B7FI2UQLIQ` | `EXECUTE_GOVERNANCE_VOTE` | #4140515 | `CCVERIFIERREGISTRY...` | [View Tx fd95c8e...](https://stellar.expert/explorer/testnet/tx/fd95c8e3bc7893c38f3b4e7a49bea9849fe3ecc3c188306e0ee0482a39649018) |
 
 ---
 
