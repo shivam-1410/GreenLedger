@@ -24,6 +24,11 @@ export function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Protocol Modules</h4>
             <ul className="space-y-2 text-xs">
               <li>
+                <Link href="/compliance" className="hover:text-emerald-400 transition-colors">
+                  Enterprise ESG Compliance Audit
+                </Link>
+              </li>
+              <li>
                 <Link href="/marketplace" className="hover:text-emerald-400 transition-colors">
                   Carbon Credit Marketplace
                 </Link>
