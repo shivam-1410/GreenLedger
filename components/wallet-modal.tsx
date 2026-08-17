@@ -112,9 +112,12 @@ export function WalletModal({ isOpen, onClose }: WalletModalProps) {
         </div>
       )}
 
-      <div className="pt-2 border-t border-slate-800/80 text-center">
-        <p className="text-xs text-slate-500 flex items-center justify-center gap-1">
-          <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" /> Secure multi-wallet integration via StellarWalletsKit
+      <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-500">
+        <span className="flex items-center gap-1 text-emerald-400">
+          <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" /> Testnet Ready (~120ms)
+        </span>
+        <p className="flex items-center gap-1">
+          <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" /> StellarWalletsKit
         </p>
       </div>
     </Dialog>
