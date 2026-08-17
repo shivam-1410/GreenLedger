@@ -175,3 +175,27 @@ export interface SorobanContractInspection {
   totalEvents: number;
   functions: string[];
 }
+
+export interface EnterpriseComplianceReport {
+  orgName: string;
+  auditPeriod: string;
+  totalEmissionsTons: number;
+  totalOffsetTons: number;
+  netEmissionsTons: number;
+  complianceScore: number;
+  status: 'COMPLIANT' | 'WARNING' | 'NON_COMPLIANT';
+  verifiedOnChain: boolean;
+  verifiersCount: number;
+  auditHash: string;
+  timestamp: number;
+}
+
+export interface SorobanXdrParsedEvent {
+  contractId: string;
+  topics: string[];
+  dataHex: string;
+  decodedValue?: string | number | object;
+  ledgerSequence: number;
+  timestamp: number;
+}
+
