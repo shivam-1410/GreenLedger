@@ -51,6 +51,8 @@ const nextConfig = {
       { source: '/soroban-inspector', destination: '/inspector', permanent: true },
       { source: '/impact-leaderboard', destination: '/leaderboard', permanent: true },
       { source: '/top-offsetters', destination: '/leaderboard', permanent: true },
+      { source: '/esg-audit', destination: '/compliance', permanent: true },
+      { source: '/audit-report', destination: '/compliance', permanent: true },
     ];
   },
 };
