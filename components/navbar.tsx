@@ -37,6 +37,7 @@ export function Navbar() {
     { href: '/', label: 'Home', icon: Leaf },
     { href: '/marketplace', label: 'Marketplace', icon: ShoppingBag },
     { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { href: '/compliance', label: 'Compliance', icon: FileText },
     { href: '/calculator', label: 'Calculator', icon: Calculator },
     { href: '/inspector', label: 'Inspector', icon: SearchCode },
     { href: '/leaderboard', label: 'Leaderboard', icon: Trophy },
