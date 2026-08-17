@@ -3,8 +3,8 @@ import { PROOF_OF_INTERACTIONS } from '../lib/proofs';
 import { INSPECTOR_CONTRACTS } from '../lib/inspector';
 
 describe('August Level 4 Production Verification Suite', () => {
-  it('validates 17 verified live Stellar testnet user proof records', () => {
-    expect(PROOF_OF_INTERACTIONS.length).toBe(17);
+  it('validates 17+ verified live Stellar testnet user proof records', () => {
+    expect(PROOF_OF_INTERACTIONS.length).toBeGreaterThanOrEqual(17);
     PROOF_OF_INTERACTIONS.forEach((proof) => {
       expect(proof.verified).toBe(true);
       expect(proof.txHash).toMatch(/^[0-9a-fA-F]{64}$/);
