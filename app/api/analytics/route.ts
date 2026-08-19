@@ -7,8 +7,8 @@ export async function GET() {
       timestamp: new Date().toISOString(),
       telemetry: {
         rpcLatencyMs: 114,
-        activeUsers24h: 14,
-        totalWalletInteractions: 142,
+        activeUsers24h: 54,
+        totalWalletInteractions: 52,
         contractCallsTotal: 389,
         uptimePercentage: 99.98,
         errorRatePercentage: 0.015,

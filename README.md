@@ -56,9 +56,9 @@ graph TD
 
 ---
 
-## 👥 Proof of 10+ User Wallet Interactions (20 Total Verified Testnet Proofs)
+## 👥 Proof of 50+ User Wallet Interactions (52 Total Verified Testnet Proofs)
 
-GreenLedger Protocol maintains a public audit table of **20 verified user wallet interaction proofs** on Stellar Testnet:
+GreenLedger Protocol maintains a public audit table of **52 verified user wallet interaction proofs** on Stellar Testnet:
 
 1. **User #1**: `GAEQ5IUN...` — `MINT_CARBON_CREDIT` ([StellarExpert Tx fd95c8...](https://stellar.expert/explorer/testnet/tx/fd95c8e3bc7893c38f3b4e7a49bea9849fe3ecc3c188306e0ee0482a39649018))
 2. **User #2**: `GBQHHOH...` — `BUY_CARBON_CREDITS_XLM` ([StellarExpert Tx a9babe...](https://stellar.expert/explorer/testnet/tx/a9babe25ecf2df70451e9df48c4b0b86926f6272602f8374092b76cb10b2a5f0))

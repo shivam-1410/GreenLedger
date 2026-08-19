@@ -19,7 +19,7 @@
 - 🏆 **Global ESG Impact Leaderboard**: [https://green-ledger-delta.vercel.app/leaderboard](https://green-ledger-delta.vercel.app/leaderboard)
 - 📊 **Real-Time Analytics & SLA Telemetry**: [https://green-ledger-delta.vercel.app/analytics](https://green-ledger-delta.vercel.app/analytics)
 - 💬 **User Feedback & CSAT Collector**: [https://green-ledger-delta.vercel.app/feedback](https://green-ledger-delta.vercel.app/feedback)
-- 👥 **Proof of 10+ User Wallet Interactions (20 Total)**: [https://green-ledger-delta.vercel.app/proof](https://green-ledger-delta.vercel.app/proof)
+- 👥 **Proof of 50+ User Wallet Interactions (52 Total)**: [https://green-ledger-delta.vercel.app/proof](https://green-ledger-delta.vercel.app/proof)
 - 🏥 **System Health Check API**: [https://green-ledger-delta.vercel.app/api/health](https://green-ledger-delta.vercel.app/api/health)
 - 📜 **Core Soroban Contract ID**: `CCGREENLEDGER9999999999999999999999999999999999999999`
 - 🏛️ **VerifierRegistry Governance ID**: `CCVERIFIERREGISTRY9999999999999999999999999999999`
