@@ -25,6 +25,7 @@ import {
   Calculator,
   SearchCode,
   Trophy,
+  FileText,
 } from 'lucide-react';
 
 export function Navbar() {
