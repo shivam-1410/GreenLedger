@@ -4,6 +4,8 @@ import './globals.css';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { TransactionTracker } from '@/components/tx-tracker';
+import { AnimatedBackground } from '@/components/animated-background';
+import { RouteTransition } from '@/components/route-transition';
 import { Toaster } from 'sonner';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
@@ -23,11 +25,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${outfit.variable} font-sans min-h-screen flex flex-col`}
+        className={`${inter.variable} ${outfit.variable} font-sans min-h-screen flex flex-col relative bg-slate-950 text-slate-100 selection:bg-emerald-500 selection:text-slate-950`}
         suppressHydrationWarning
       >
+        <AnimatedBackground />
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <RouteTransition>
+          <main className="flex-1">{children}</main>
+        </RouteTransition>
         <Footer />
         <TransactionTracker />
         <Toaster position="bottom-left" theme="dark" richColors />
