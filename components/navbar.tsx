@@ -26,6 +26,8 @@ import {
   SearchCode,
   Trophy,
   FileText,
+  Satellite,
+  Banknote,
 } from 'lucide-react';
 
 export function Navbar() {
@@ -38,6 +40,8 @@ export function Navbar() {
     { href: '/', label: 'Home', icon: Leaf },
     { href: '/marketplace', label: 'Marketplace', icon: ShoppingBag },
     { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { href: '/oracle', label: 'MRV Oracle', icon: Satellite },
+    { href: '/fiat', label: 'SEP-24 Fiat', icon: Banknote },
     { href: '/compliance', label: 'Compliance', icon: FileText },
     { href: '/calculator', label: 'Calculator', icon: Calculator },
     { href: '/inspector', label: 'Inspector', icon: SearchCode },
@@ -45,8 +49,6 @@ export function Navbar() {
     { href: '/governance', label: 'Governance', icon: ShieldCheck },
     { href: '/analytics', label: 'Analytics', icon: BarChart3 },
     { href: '/feedback', label: 'Feedback', icon: MessageSquare },
-    { href: '/activity', label: 'Activity', icon: Activity },
-    { href: '/transactions', label: 'Tx History', icon: History },
   ];
 
   return (

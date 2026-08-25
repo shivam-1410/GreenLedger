@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useWalletStore } from '@/store/useWalletStore';
 import { useAppStore } from '@/store/useAppStore';
 import { MOCK_VERIFIERS, STELLAR_CONFIG } from '@/lib/config';
+import { INITIAL_DAO_PROPOSALS, createDAOProposal, evaluateProposalVote, DAOProposal } from '@/lib/governance';
 import { Verifier } from '@/types';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -19,6 +20,9 @@ import {
   ExternalLink,
   Search,
   Loader2,
+  Vote,
+  Users,
+  Award,
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -27,15 +31,59 @@ export default function GovernancePage() {
   const { addTransaction, updateTransaction } = useAppStore();
 
   const [verifiers, setVerifiers] = useState<Verifier[]>(MOCK_VERIFIERS);
+  const [proposals, setProposals] = useState<DAOProposal[]>(INITIAL_DAO_PROPOSALS);
+
   const [newAddress, setNewAddress] = useState('GBK11223344556677889900AABBCCDDEEFFGGHHIIJJKKLLMM');
   const [newName, setNewName] = useState('Clean Development Mechanism (CDM)');
   const [newUri, setNewUri] = useState('https://cdm.unfccc.int');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Proposal Creation Form
+  const [propTitle, setPropTitle] = useState('Accredit Soil Carbon Alliance as Level-2 Verifier');
+  const [propDesc, setPropDesc] = useState('Authorize Soil Carbon Alliance to issue accredited CO2 credits on Soroban contract');
+  const [propVerifierAddr, setPropVerifierAddr] = useState('GDUQ3DXGSNRGPNNGHLKXLSVPRC3V2PAYMP6ITW3ICSRLF64KVOTPA6AT');
+
   // Inter-Contract Query Simulator State
   const [checkAddress, setCheckAddress] = useState('');
   const [checkResult, setCheckResult] = useState<{ checked: boolean; isApproved: boolean } | null>(null);
   const [isChecking, setIsChecking] = useState(false);
+
+  const handleCreateProposal = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!isConnected) {
+      toast.error('Connect your Stellar wallet to submit a DAO proposal.');
+      return;
+    }
+
+    const newProp = createDAOProposal(
+      propTitle,
+      propDesc,
+      publicKey || 'GAEQ5IUNQTW36XMQF6MR2VWKPG3JOF6IKEGAD2JQ6OUNKTUVBAIE5AO3',
+      propVerifierAddr,
+      'APPROVE'
+    );
+    setProposals([newProp, ...proposals]);
+    toast.success(`DAO Governance Proposal "${propTitle.slice(0, 30)}..." Created!`);
+  };
+
+  const handleVoteProposal = (propId: string, support: boolean) => {
+    setProposals(
+      proposals.map((p) => {
+        if (p.id === propId) {
+          const votesFor = support ? p.votesFor + 15000 : p.votesFor;
+          const votesAgainst = !support ? p.votesAgainst + 15000 : p.votesAgainst;
+          const updated = { ...p, votesFor, votesAgainst };
+          const evalRes = evaluateProposalVote(updated);
+          if (evalRes.canExecute) {
+            updated.status = 'PASSED';
+          }
+          return updated;
+        }
+        return p;
+      })
+    );
+    toast.success(`Vote cast on proposal ${propId}!`);
+  };
 
   const handleApproveVerifier = async () => {
     if (!isConnected || !publicKey) {
@@ -55,7 +103,7 @@ export default function GovernancePage() {
     });
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 1500));
 
       const newV: Verifier = {
         address: newAddress,
@@ -66,7 +114,6 @@ export default function GovernancePage() {
       };
 
       setVerifiers([newV, ...verifiers]);
-
       const mockTxHash = '0x' + Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
 
       updateTransaction(txId, {
@@ -95,7 +142,7 @@ export default function GovernancePage() {
     }
 
     setIsChecking(true);
-    await new Promise((r) => setTimeout(r, 1000));
+    await new Promise((r) => setTimeout(r, 800));
 
     const cleanInput = checkAddress.trim().toLowerCase();
     const found = verifiers.some(
@@ -115,12 +162,18 @@ export default function GovernancePage() {
       {/* Header & Inter-Contract Badge */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
         <div>
-          <div className="flex items-center gap-2 text-teal-400 text-xs font-semibold uppercase tracking-wider mb-1">
-            <Cpu className="h-4 w-4" /> Soroban Inter-Contract Governance
+          <div className="flex items-center gap-2 mb-1">
+            <Badge variant="outline" className="bg-emerald-950/60 text-emerald-400 border-emerald-500/40 gap-1.5 px-3 py-1">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              Stellar Level 5 Feature
+            </Badge>
+            <Badge variant="secondary" className="bg-teal-950 text-teal-300 border border-teal-500/30">
+              Multi-Sig DAO Governance
+            </Badge>
           </div>
-          <h1 className="text-3xl font-extrabold text-white tracking-tight">Verifier Registry Governance</h1>
+          <h1 className="text-3xl font-extrabold text-white tracking-tight">Decentralized Governance & Verifier Registry</h1>
           <p className="text-sm text-slate-400">
-            Cross-contract authorization checking between <span className="text-teal-300 font-mono">VerifierRegistry</span> and <span className="text-emerald-300 font-mono">GreenLedger</span> contracts.
+            Multi-signature proposal voting and cross-contract authorization checking between <span className="text-teal-300 font-mono">VerifierRegistry</span> and <span className="text-emerald-300 font-mono">GreenLedger</span>.
           </p>
         </div>
 
@@ -136,7 +189,60 @@ export default function GovernancePage() {
         </div>
       </div>
 
-      {/* Inter-Contract Call Demonstration Box */}
+      {/* DAO Multi-Sig Proposals Section */}
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-bold text-white flex items-center gap-2">
+            <Vote className="h-5 w-5 text-emerald-400" /> Active Multi-Sig DAO Proposals ({proposals.length})
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {proposals.map((prop) => {
+            const evalRes = evaluateProposalVote(prop);
+            return (
+              <div key={prop.id} className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-4">
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <span className="font-mono text-xs font-bold text-emerald-400">{prop.id}</span>
+                    <h3 className="text-base font-bold text-white mt-1">{prop.title}</h3>
+                  </div>
+                  <Badge variant={prop.status === 'PASSED' ? 'verified' : 'secondary'}>{prop.status}</Badge>
+                </div>
+
+                <p className="text-xs text-slate-400">{prop.description}</p>
+
+                {/* Vote Progress Bar */}
+                <div className="space-y-1.5">
+                  <div className="flex justify-between text-xs text-slate-400">
+                    <span>Approval Ratio: {evalRes.approvalPercent}%</span>
+                    <span>Required: {prop.thresholdRequired}%</span>
+                  </div>
+                  <div className="w-full bg-slate-950 h-2 rounded-full overflow-hidden">
+                    <div className="bg-emerald-400 h-full rounded-full" style={{ width: `${Math.min(100, evalRes.approvalPercent)}%` }} />
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between pt-3 border-t border-slate-800">
+                  <div className="text-[11px] text-slate-500 font-mono">
+                    Votes: {prop.votesFor.toLocaleString()} FOR / {prop.votesAgainst.toLocaleString()} AGAINST
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button size="sm" onClick={() => handleVoteProposal(prop.id, true)} className="bg-emerald-600 hover:bg-emerald-500 text-xs">
+                      Vote FOR
+                    </Button>
+                    <Button size="sm" onClick={() => handleVoteProposal(prop.id, false)} variant="outline" className="border-red-500/40 text-red-300 text-xs">
+                      Vote AGAINST
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Inter-Contract Query Simulator Box */}
       <div className="p-6 rounded-2xl border border-teal-500/30 bg-gradient-to-r from-slate-900/90 to-slate-950/90 backdrop-blur-xl shadow-xl space-y-4">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-2">
@@ -160,29 +266,6 @@ export default function GovernancePage() {
               {isChecking ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
               <span>Query Cross-Contract State</span>
             </Button>
-          </div>
-
-          {/* Quick Test Buttons */}
-          <div className="flex flex-wrap items-center gap-2 text-[11px] text-slate-400">
-            <span>Quick Test Inputs:</span>
-            <button
-              onClick={() => setCheckAddress(MOCK_VERIFIERS[0].address)}
-              className="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-teal-300 font-mono"
-            >
-              Verra Address (Approved)
-            </button>
-            <button
-              onClick={() => setCheckAddress(MOCK_VERIFIERS[1].address)}
-              className="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-teal-300 font-mono"
-            >
-              Gold Standard (Approved)
-            </button>
-            <button
-              onClick={() => setCheckAddress('GUNKNOWN999999999999999999999999')}
-              className="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-red-300 font-mono"
-            >
-              Unknown Address (Not Registered)
-            </button>
           </div>
         </div>
 
@@ -234,29 +317,6 @@ export default function GovernancePage() {
                   <p className="text-xs text-slate-400 font-mono">
                     Address: <span className="text-teal-300">{truncateAddress(v.address, 6)}</span>
                   </p>
-                  <span className="text-[11px] text-slate-500 block">
-                    Accredited: {formatTimestamp(v.approvedAt)}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => {
-                      setCheckAddress(v.address);
-                      toast.info(`Address copied to query input! Click "Query Cross-Contract State".`);
-                    }}
-                    className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-teal-300 font-mono"
-                  >
-                    Test Query
-                  </button>
-                  <a
-                    href={v.accreditationUri}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-emerald-400 hover:underline flex items-center gap-1 shrink-0"
-                  >
-                    Registry URI <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
                 </div>
               </div>
             ))}
@@ -268,45 +328,16 @@ export default function GovernancePage() {
           <h2 className="text-lg font-bold text-white flex items-center gap-2">
             <PlusCircle className="h-5 w-5 text-emerald-400" /> Register Verifier
           </h2>
-          <p className="text-xs text-slate-400">
-            Submit governance transaction to register an accredited carbon verifier in the registry contract.
-          </p>
-
           <div className="space-y-3 text-xs">
             <div>
               <label className="block font-semibold text-slate-300 mb-1">Verifier Address</label>
-              <Input
-                value={newAddress}
-                onChange={(e) => setNewAddress(e.target.value)}
-                placeholder="G... Public Key"
-                className="font-mono"
-              />
+              <Input value={newAddress} onChange={(e) => setNewAddress(e.target.value)} className="font-mono" />
             </div>
-
             <div>
               <label className="block font-semibold text-slate-300 mb-1">Organization Name</label>
-              <Input
-                value={newName}
-                onChange={(e) => setNewName(e.target.value)}
-                placeholder="e.g. Gold Standard"
-              />
+              <Input value={newName} onChange={(e) => setNewName(e.target.value)} />
             </div>
-
-            <div>
-              <label className="block font-semibold text-slate-300 mb-1">Accreditation URI</label>
-              <Input
-                value={newUri}
-                onChange={(e) => setNewUri(e.target.value)}
-                placeholder="https://registry.org/accreditation"
-              />
-            </div>
-
-            <Button
-              variant="glow"
-              onClick={handleApproveVerifier}
-              disabled={isSubmitting || !isConnected}
-              className="w-full h-10 gap-2 mt-2"
-            >
+            <Button variant="glow" onClick={handleApproveVerifier} disabled={isSubmitting || !isConnected} className="w-full h-10 gap-2 mt-2">
               {isSubmitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <PlusCircle className="h-4 w-4" />}
               <span>Approve & Authorize Verifier</span>
             </Button>
