@@ -118,13 +118,62 @@ export interface UserInteractionProof {
   userNumber: number;
   walletAddress: string;
   walletLabel: string;
+  entityType: 'Enterprise ESG' | 'University NGO' | 'Renewable Producer' | 'Retail Steward' | 'Satellite Node' | 'Climate DAO';
+  country: string;
   action: string;
   txHash: string;
   ledgerSequence: number;
   contractId: string;
   timestamp: number;
+  onboardingDate: string;
   verified: boolean;
   stellarExpertUrl: string;
+}
+
+export interface StakingPool {
+  poolId: string;
+  creditId: string;
+  projectName: string;
+  creditType: CreditType;
+  aprPercentage: number;
+  totalStakedTons: number;
+  rewardToken: string;
+  dailyRewardRate: number;
+  status: 'ACTIVE' | 'PAUSED';
+  minStakeTons: number;
+}
+
+export interface UserStakeRecord {
+  walletAddress: string;
+  poolId: string;
+  stakedTons: number;
+  accumulatedRewards: number;
+  lastClaimTimestamp: number;
+  stakedAt: number;
+}
+
+export interface AIAuditScanResult {
+  scanId: string;
+  entityName: string;
+  sector: string;
+  reportedEmissionsTons: number;
+  satelliteEstimatedEmissionsTons: number;
+  discrepancyPercentage: number;
+  riskLevel: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
+  recommendation: string;
+  anomalyDetected: boolean;
+  auditHash: string;
+  confidenceScore: number;
+  timestamp: number;
+}
+
+export interface TelemetryWebhookEvent {
+  eventId: string;
+  eventType: 'MRV_TELEMETRY' | 'GOVERNANCE_VOTE' | 'STAKE_DEPOSIT' | 'AI_ANOMALY_ALERT' | 'SEP24_TRANSACTION';
+  source: string;
+  payload: Record<string, any>;
+  timestamp: number;
+  signature: string;
 }
 
 export interface OnboardingStep {
