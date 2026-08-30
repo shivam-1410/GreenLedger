@@ -1,12 +1,45 @@
-export const STELLAR_CONFIG = {
-  network: process.env.NEXT_PUBLIC_STELLAR_NETWORK || 'testnet',
-  networkPassphrase: 'Test SDF Network ; September 2015',
-  rpcUrl: process.env.NEXT_PUBLIC_SOROBAN_RPC_URL || 'https://soroban-testnet.stellar.org',
-  horizonUrl: 'https://horizon-testnet.stellar.org',
-  contractId: process.env.NEXT_PUBLIC_CONTRACT_ID || 'CCGREENLEDGER9999999999999999999999999999999999999999',
-  verifierRegistryContractId: process.env.NEXT_PUBLIC_VERIFIER_REGISTRY_ID || 'CCVERIFIERREGISTRY9999999999999999999999999999999',
-  explorerUrl: 'https://stellar.expert/explorer/testnet',
+export type NetworkType = 'testnet' | 'mainnet';
+
+export interface NetworkConfig {
+  network: NetworkType;
+  networkPassphrase: string;
+  rpcUrl: string;
+  horizonUrl: string;
+  contractId: string;
+  verifierRegistryContractId: string;
+  feeSponsorContractId: string;
+  multiSigContractId: string;
+  explorerUrl: string;
+}
+
+export const NETWORKS: Record<NetworkType, NetworkConfig> = {
+  testnet: {
+    network: 'testnet',
+    networkPassphrase: 'Test SDF Network ; September 2015',
+    rpcUrl: process.env.NEXT_PUBLIC_SOROBAN_RPC_URL || 'https://soroban-testnet.stellar.org',
+    horizonUrl: 'https://horizon-testnet.stellar.org',
+    contractId: process.env.NEXT_PUBLIC_CONTRACT_ID || 'CCGREENLEDGER9999999999999999999999999999999999999999',
+    verifierRegistryContractId: process.env.NEXT_PUBLIC_VERIFIER_REGISTRY_ID || 'CCVERIFIERREGISTRY9999999999999999999999999999999',
+    feeSponsorContractId: 'CCFEESPONSORVAULT9999999999999999999999999999999999999',
+    multiSigContractId: 'CCMULTISIGDAO999999999999999999999999999999999999999999',
+    explorerUrl: 'https://stellar.expert/explorer/testnet',
+  },
+  mainnet: {
+    network: 'mainnet',
+    networkPassphrase: 'Public Global Stellar Network ; September 2015',
+    rpcUrl: 'https://mainnet.sorobanrpc.com',
+    horizonUrl: 'https://horizon.stellar.org',
+    contractId: 'CDMAINNETGREENLEDGER99999999999999999999999999999999999999',
+    verifierRegistryContractId: 'CDMAINNETVERIFIERREGISTRY999999999999999999999999999999',
+    feeSponsorContractId: 'CDMAINNETFEESPONSORVAULT999999999999999999999999999999',
+    multiSigContractId: 'CDMAINNETMULTISIGDAO999999999999999999999999999999999',
+    explorerUrl: 'https://stellar.expert/explorer/public',
+  },
 };
+
+export const STELLAR_CONFIG = NETWORKS[
+  (process.env.NEXT_PUBLIC_STELLAR_NETWORK as NetworkType) || 'testnet'
+];
 
 export const MOCK_PROJECTS = [
   {
