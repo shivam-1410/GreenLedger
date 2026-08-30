@@ -28,6 +28,9 @@ import {
   FileText,
   Satellite,
   Banknote,
+  Coins,
+  Cpu,
+  Users,
 } from 'lucide-react';
 
 export function Navbar() {
@@ -40,9 +43,12 @@ export function Navbar() {
     { href: '/', label: 'Home', icon: Leaf },
     { href: '/marketplace', label: 'Marketplace', icon: ShoppingBag },
     { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { href: '/staking', label: 'Staking', icon: Coins },
+    { href: '/auditor', label: 'AI Auditor', icon: Cpu },
     { href: '/oracle', label: 'MRV Oracle', icon: Satellite },
     { href: '/fiat', label: 'SEP-24 Fiat', icon: Banknote },
     { href: '/compliance', label: 'Compliance', icon: FileText },
+    { href: '/proof', label: '100+ Proofs', icon: Users },
     { href: '/calculator', label: 'Calculator', icon: Calculator },
     { href: '/inspector', label: 'Inspector', icon: SearchCode },
     { href: '/leaderboard', label: 'Leaderboard', icon: Trophy },
