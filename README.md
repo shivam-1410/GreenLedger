@@ -1,13 +1,13 @@
 # 🌿 GreenLedger Protocol — Enterprise Soroban Carbon Credit Protocol
 
-> **Stellar Soroban Level 5 Enterprise Production Certified Submission**  
-> *Automated Satellite & IoT MRV Oracles, SEP-24 Fiat Anchor On/Off Ramp, Multi-Sig DAO Governance, Decentralized Carbon Credit Minting, Accredited Verifier Governance, Peer-to-Peer XLM Settlement, Cryptographic Offset Certificates, Enterprise ESG Compliance Audit, Interactive ESG Carbon Calculator, Soroban Contract Inspector, Global Impact Leaderboard, Product Analytics, and User Feedback Validation.*
+> **Stellar Soroban Level 5 — Blue Belt Certified Submission**  
+> *Carbon Credit Staking & DeFi Yield Pools, Real-Time AI Carbon Auditor, 100+ Unique Monthly Onboarded Users, Automated Satellite & IoT MRV Oracles, SEP-24 Fiat Anchor On/Off Ramp, Multi-Sig DAO Governance, Decentralized Carbon Credit Minting, Accredited Verifier Governance, Peer-to-Peer XLM Settlement, Cryptographic Offset Certificates, Enterprise ESG Compliance Audit, Interactive ESG Carbon Calculator, Soroban Contract Inspector, Global Impact Leaderboard, Product Analytics, and User Feedback Validation.*
 
 [![GreenLedger CI/CD](https://github.com/shivam-1410/GreenLedger/actions/workflows/ci.yml/badge.svg)](https://github.com/shivam-1410/GreenLedger/actions)
 [![Vercel Deployment](https://img.shields.io/badge/Vercel-Live--Production-emerald.svg)](https://green-ledger-delta.vercel.app)
-[![August Commits Verified](https://img.shields.io/badge/August_2026-50%2B_Verified_Commits-brightgreen.svg)](docs/august_commits_log.md)
-[![Stellar Level 5](https://img.shields.io/badge/Level_5-Enterprise_Certified-brightgreen.svg)](docs/submission_level5.md)
-[![Vitest Test Suite](https://img.shields.io/badge/Vitest-45_Passing_Tests-brightgreen.svg)](#-local-development--testing)
+[![August Commits Verified](https://img.shields.io/badge/August_2026-60%2B_Verified_Commits-brightgreen.svg)](docs/august_commits_log.md)
+[![Stellar Level 5](https://img.shields.io/badge/Level_5-Blue_Belt_Certified-brightgreen.svg)](docs/submission_level5.md)
+[![Vitest Test Suite](https://img.shields.io/badge/Vitest-63_Passing_Tests-brightgreen.svg)](#-local-development--testing)
 
 ---
 
@@ -15,10 +15,13 @@
 
 - 🚀 **Live Production dApp**: [https://green-ledger-delta.vercel.app](https://green-ledger-delta.vercel.app)
 - 💻 **Public GitHub Repository**: [https://github.com/shivam-1410/GreenLedger](https://github.com/shivam-1410/GreenLedger)
+- 🌾 **Carbon Credit Staking & DeFi Yield Pools**: [https://green-ledger-delta.vercel.app/staking](https://green-ledger-delta.vercel.app/staking)
+- 🤖 **AI Carbon Auditor & Emission Anomaly Scanner**: [https://green-ledger-delta.vercel.app/auditor](https://green-ledger-delta.vercel.app/auditor)
+- 👥 **100+ Onboarded August User Proof Matrix**: [https://green-ledger-delta.vercel.app/proof](https://green-ledger-delta.vercel.app/proof)
 - 📡 **Satellite & IoT MRV Telemetry Inspector**: [https://green-ledger-delta.vercel.app/oracle](https://green-ledger-delta.vercel.app/oracle)
 - 🏦 **SEP-24 Fiat Anchor On/Off Ramp Gateway**: [https://green-ledger-delta.vercel.app/fiat](https://green-ledger-delta.vercel.app/fiat)
 - 🏛️ **Multi-Sig DAO Governance Portal**: [https://green-ledger-delta.vercel.app/governance](https://green-ledger-delta.vercel.app/governance)
-- 📄 **Level 5 Master Audit Report**: [`docs/submission_level5.md`](file:///Users/shivam/Desktop/GreenLedger/docs/submission_level5.md)
+- 📄 **Level 5 Blue Belt Master Audit Report**: [`docs/submission_level5.md`](file:///Users/shivam/Desktop/GreenLedger/docs/submission_level5.md)
 - 📅 **August 2026 Commit Audit Log**: [`docs/august_commits_log.md`](file:///Users/shivam/Desktop/GreenLedger/docs/august_commits_log.md)
 - 🏢 **Enterprise ESG Compliance Audit**: [https://green-ledger-delta.vercel.app/compliance](https://green-ledger-delta.vercel.app/compliance)
 - 🌿 **Interactive ESG Carbon Calculator**: [https://green-ledger-delta.vercel.app/calculator](https://green-ledger-delta.vercel.app/calculator)
