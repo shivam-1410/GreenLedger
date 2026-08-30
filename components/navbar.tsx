@@ -31,6 +31,10 @@ import {
   Coins,
   Cpu,
   Users,
+  Flame,
+  Globe,
+  KeyRound,
+  Fingerprint,
 } from 'lucide-react';
 
 export function Navbar() {
@@ -42,13 +46,18 @@ export function Navbar() {
   const navLinks = [
     { href: '/', label: 'Home', icon: Leaf },
     { href: '/marketplace', label: 'Marketplace', icon: ShoppingBag },
-    { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { href: '/sponsor', label: 'Gasless Sponsor', icon: Flame },
+    { href: '/crossborder', label: 'SEP-31 Remit', icon: Globe },
+    { href: '/multisig', label: 'Multi-Sig', icon: KeyRound },
+    { href: '/smart-wallet', label: 'Smart Wallet', icon: Fingerprint },
+    { href: '/security', label: 'Security Audit', icon: ShieldCheck },
     { href: '/staking', label: 'Staking', icon: Coins },
     { href: '/auditor', label: 'AI Auditor', icon: Cpu },
     { href: '/oracle', label: 'MRV Oracle', icon: Satellite },
     { href: '/fiat', label: 'SEP-24 Fiat', icon: Banknote },
     { href: '/compliance', label: 'Compliance', icon: FileText },
     { href: '/proof', label: '100+ Proofs', icon: Users },
+    { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/calculator', label: 'Calculator', icon: Calculator },
     { href: '/inspector', label: 'Inspector', icon: SearchCode },
     { href: '/leaderboard', label: 'Leaderboard', icon: Trophy },
