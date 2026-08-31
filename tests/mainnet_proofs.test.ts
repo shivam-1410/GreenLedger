@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest';
 import { MAINNET_USER_PROOFS } from '../lib/mainnet_proofs';
 
-describe('Level 6 Real Adoption: 20+ Verified Mainnet Users Test Suite', () => {
-  it('should exceed minimum 20+ verified Mainnet users requirement (25 Total)', () => {
-    expect(MAINNET_USER_PROOFS.length).toBeGreaterThanOrEqual(20);
-    expect(MAINNET_USER_PROOFS.length).toBe(25);
+describe('Level 6+ Real Adoption: 50+ Verified Mainnet Users Test Suite', () => {
+  it('should exceed minimum 50+ verified Mainnet users requirement (55 Total)', () => {
+    expect(MAINNET_USER_PROOFS.length).toBeGreaterThanOrEqual(50);
+    expect(MAINNET_USER_PROOFS.length).toBe(55);
   });
 
   it('should ensure all Mainnet wallet addresses and tx hashes are completely unique and valid', () => {

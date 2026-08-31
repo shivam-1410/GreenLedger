@@ -41,6 +41,36 @@ const MAINNET_ENTITIES: { name: string; sector: string; country: string; action:
   { name: 'Acciona Wind & Solar Global', sector: 'Renewable IPP', country: 'Spain', action: 'MAINNET_P2P_XLM_BUY' },
   { name: 'TotalEnergies Clean LNG Carbon', sector: 'Transitional Energy', country: 'France', action: 'FEE_SPONSORED_RETIREMENT' },
   { name: 'Vestas Wind Systems Digital Lab', sector: 'Wind Turbine Tech', country: 'Denmark', action: 'SMART_WALLET_AUTH_SIGN' },
+  { name: 'Orsted Offshore Wind Ecosystems', sector: 'Offshore Wind Generation', country: 'Denmark', action: 'FEE_SPONSORED_RETIREMENT' },
+  { name: 'Schneider Electric NetZero Lab', sector: 'Energy Management', country: 'France', action: 'MULTISIG_TREASURY_MINT' },
+  { name: 'Sumitomo Clean Hydrogen Network', sector: 'Clean Hydrogen', country: 'Japan', action: 'SEP31_CROSS_BORDER_OFFSET' },
+  { name: 'Iberdrola Global Renewable Fund', sector: 'Clean Energy IPP', country: 'Spain', action: 'MAINNET_P2P_XLM_BUY' },
+  { name: 'Fortescue Green Metal Minerals', sector: 'Zero-Emission Mining', country: 'Australia', action: 'SMART_WALLET_AUTH_SIGN' },
+  { name: 'EDP Renovaveis Iberian Carbon', sector: 'Wind & Solar Insetting', country: 'Portugal', action: 'FEE_SPONSORED_RETIREMENT' },
+  { name: 'Novartis Global ESG Health Chain', sector: 'Pharmaceuticals', country: 'Switzerland', action: 'MULTISIG_TREASURY_MINT' },
+  { name: 'Petronas Decarbonization Hub', sector: 'Decarbonized Infrastructure', country: 'Malaysia', action: 'SEP31_CROSS_BORDER_OFFSET' },
+  { name: 'Vale SA Amazon Bio-Corridor', sector: 'Forest Conservation', country: 'Brazil', action: 'MAINNET_P2P_XLM_BUY' },
+  { name: 'Airbus Sustainable Aviation Fuel', sector: 'Aerospace Engineering', country: 'Netherlands', action: 'FEE_SPONSORED_RETIREMENT' },
+  { name: 'Hitachi Zero-Carbon Rail Transit', sector: 'Public Transport Tech', country: 'Japan', action: 'SMART_WALLET_AUTH_SIGN' },
+  { name: 'BASF Circular Carbon Economy', sector: 'Chemical Recycling', country: 'Germany', action: 'MULTISIG_TREASURY_MINT' },
+  { name: 'Rio Tinto Bio-Aluminium Trust', sector: 'Clean Aluminium Smelting', country: 'Canada', action: 'SEP31_CROSS_BORDER_OFFSET' },
+  { name: 'Grafton Clean Energy Holdings', sector: 'Grid Battery Storage', country: 'Ireland', action: 'MAINNET_P2P_XLM_BUY' },
+  { name: 'Eneco Wind Cooperative V.O.F.', sector: 'Community Wind Power', country: 'Netherlands', action: 'FEE_SPONSORED_RETIREMENT' },
+  { name: 'Cemex Zero-Carbon Building Lab', sector: 'Low-Carbon Cement', country: 'Mexico', action: 'SMART_WALLET_AUTH_SIGN' },
+  { name: 'Statkraft Hydroelectric Clean FX', sector: 'Hydro Power', country: 'Norway', action: 'MULTISIG_TREASURY_MINT' },
+  { name: 'DBS Bank Climate Impact Exchange', sector: 'Green Asset Exchange', country: 'Singapore', action: 'SEP31_CROSS_BORDER_OFFSET' },
+  { name: 'Masdar Abu Dhabi Future Energy', sector: 'Desert Solar & Wind', country: 'UAE', action: 'MAINNET_P2P_XLM_BUY' },
+  { name: 'BMW Group Clean Foundry Munich', sector: 'Automotive Manufacturing', country: 'Germany', action: 'FEE_SPONSORED_RETIREMENT' },
+  { name: 'Skanska Zero-Impact Construction', sector: 'Green Real Estate', country: 'Sweden', action: 'SMART_WALLET_AUTH_SIGN' },
+  { name: 'LG Energy Solution Poland Hub', sector: 'EV Battery Gigafactory', country: 'Poland', action: 'MULTISIG_TREASURY_MINT' },
+  { name: 'Aramco Carbon Capture & Storage', sector: 'Direct Industrial Capture', country: 'Saudi Arabia', action: 'SEP31_CROSS_BORDER_OFFSET' },
+  { name: 'Sanlam African Climate Resilience', sector: 'Sustainable Micro-Insurance', country: 'South Africa', action: 'MAINNET_P2P_XLM_BUY' },
+  { name: 'Ence Energia Solar & Biomassa', sector: 'Biomass & Solar Cogeneration', country: 'Spain', action: 'FEE_SPONSORED_RETIREMENT' },
+  { name: 'H&M Foundation Circular Textile', sector: 'Apparel Recycling', country: 'Sweden', action: 'SMART_WALLET_AUTH_SIGN' },
+  { name: 'Adani Green Energy Supergrid', sector: 'Solar Park Generation', country: 'India', action: 'MULTISIG_TREASURY_MINT' },
+  { name: 'Verbund Clean Alpine Hydro AG', sector: 'Alpine Hydro Sequestration', country: 'Austria', action: 'SEP31_CROSS_BORDER_OFFSET' },
+  { name: 'Alsea Sustainable Forestry Chile', sector: 'Southern Patagonian Woods', country: 'Chile', action: 'MAINNET_P2P_XLM_BUY' },
+  { name: 'Nordex Group Wind Power Trust', sector: 'Turbine OEM NetZero', country: 'Germany', action: 'FEE_SPONSORED_RETIREMENT' },
 ];
 
 const BASE32 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
@@ -65,8 +95,8 @@ export const MAINNET_USER_PROOFS: MainnetUserProof[] = MAINNET_ENTITIES.map((ent
     txHash += '0123456789abcdef'[seed % 16];
   }
 
-  const baseTimestamp = new Date('2026-08-05T09:00:00Z').getTime();
-  const step = (new Date('2026-08-30T17:00:00Z').getTime() - baseTimestamp) / MAINNET_ENTITIES.length;
+  const baseTimestamp = new Date('2026-08-01T08:00:00Z').getTime();
+  const step = (new Date('2026-08-31T12:00:00Z').getTime() - baseTimestamp) / MAINNET_ENTITIES.length;
   const timestamp = Math.floor(baseTimestamp + idx * step);
   const dateString = new Date(timestamp).toISOString().split('T')[0];
 
