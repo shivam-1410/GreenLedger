@@ -6,7 +6,7 @@
 [![Vercel Deployment](https://img.shields.io/badge/Vercel-Live--Production-emerald.svg)](https://green-ledger-delta.vercel.app)
 [![August Commits Verified](https://img.shields.io/badge/August_2026-75%2B_Verified_Commits-brightgreen.svg)](docs/august_commits_log.md)
 [![Stellar Level 6](https://img.shields.io/badge/Level_6-Black_Belt_Certified-black.svg)](#-level-6-black-belt-submission-checklist)
-[![Test Suite Status](https://img.shields.io/badge/Vitest-81_Passing_Tests-brightgreen.svg)](#-automated-testing-matrix-78-passing-tests)
+[![Test Suite Status](https://img.shields.io/badge/Vitest-78_Passing_Tests-brightgreen.svg)](#-automated-testing-matrix-78-passing-tests)
 
 ---
 
@@ -74,7 +74,6 @@
 21. **`tests/wallet.test.ts`** (9 tests): Wallet store state transitions, disconnect triggers, and transaction signers.
 22. **`tests/compliance.test.ts`** (2 tests): Compliance score calculation & verifier attestation tests.
 23. **`tests/xdr.test.ts`** (2 tests): Soroban XDR byte string encoding/decoding tests.
-24. **`tests/rewards.test.ts`** (3 tests): Stellar Ecosystem Reward Listing & Lead Reviewer criteria tests.
 
 ---
 

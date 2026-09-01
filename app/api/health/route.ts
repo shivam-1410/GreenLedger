@@ -49,10 +49,6 @@ export async function GET() {
         totalTonsRetired: 48920,
         totalXlmTransacted: 142850,
       },
-      rewardsListing: {
-        certificateId: 'GL-MAINNET-LVL6-BLACKBELT-2026-ALPHA',
-        status: 'APPROVED_TIER_1_GRANT_WINNER',
-      },
       monitoring: {
         rpcStatus,
         rpcLatencyMs,

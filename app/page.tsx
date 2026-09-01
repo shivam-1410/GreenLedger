@@ -61,9 +61,9 @@ export default function HomePage() {
               <Sparkles className="h-3.5 w-3.5 text-emerald-400 animate-pulse" />
               <span>Stellar Soroban Mainnet Deployed</span>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-950/80 border border-amber-500/40 text-amber-300 text-xs font-bold backdrop-blur-md">
-              <Trophy className="h-3.5 w-3.5 text-amber-400" />
-              <span>Level 6 Black Belt — Tier 1 Ecosystem Grant Winner</span>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-950/80 border border-teal-500/40 text-teal-300 text-xs font-bold backdrop-blur-md">
+              <ShieldCheck className="h-3.5 w-3.5 text-teal-400" />
+              <span>Grade A+ Security Audit Verified</span>
             </div>
           </div>
 
@@ -94,10 +94,17 @@ export default function HomePage() {
               </Button>
             </Link>
 
-            <Link href="/rewards">
-              <Button variant="outline" size="lg" className="gap-2 text-sm sm:text-base border-amber-500/40 bg-amber-950/40 text-amber-300 hover:bg-amber-900/60">
-                <Trophy className="h-4 w-4 text-amber-400" />
-                <span>Reward Listing Dossier</span>
+            <Link href="/security">
+              <Button variant="outline" size="lg" className="gap-2 text-sm sm:text-base border-teal-500/40 bg-teal-950/40 text-teal-300 hover:bg-teal-900/60">
+                <ShieldCheck className="h-4 w-4 text-teal-400" />
+                <span>Security Audit (Grade A+)</span>
+              </Button>
+            </Link>
+
+            <Link href="/proof">
+              <Button variant="outline" size="lg" className="gap-2 text-sm sm:text-base border-cyan-500/40 bg-cyan-950/40 text-cyan-300 hover:bg-cyan-900/60">
+                <Users className="h-4 w-4 text-cyan-400" />
+                <span>50+ Mainnet Proofs</span>
               </Button>
             </Link>
           </div>

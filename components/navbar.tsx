@@ -45,7 +45,6 @@ export function Navbar() {
 
   const navLinks = [
     { href: '/', label: 'Home', icon: Leaf },
-    { href: '/rewards', label: 'Reward Listing', icon: Trophy },
     { href: '/marketplace', label: 'Marketplace', icon: ShoppingBag },
     { href: '/sponsor', label: 'Gasless Sponsor', icon: Flame },
     { href: '/crossborder', label: 'SEP-31 Remit', icon: Globe },
