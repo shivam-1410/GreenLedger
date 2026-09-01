@@ -229,7 +229,7 @@ export default function HomePage() {
             <CreditCard
               key={credit.id}
               credit={credit}
-              ownedAmount={getOwnedAmount(credit.id)}
+              userOwnedAmount={getOwnedAmount(credit.id)}
               onBuy={(c) => setSelectedBuyCredit(c)}
               onRetire={(c) => setSelectedRetireCredit(c)}
             />
@@ -241,20 +241,20 @@ export default function HomePage() {
       {selectedBuyCredit && (
         <BuyDialog
           credit={selectedBuyCredit}
-          open={!!selectedBuyCredit}
-          onOpenChange={(open) => !open && setSelectedBuyCredit(null)}
+          isOpen={!!selectedBuyCredit}
+          onClose={() => setSelectedBuyCredit(null)}
         />
       )}
 
       {selectedRetireCredit && (
         <RetireDialog
           credit={selectedRetireCredit}
-          open={!!selectedRetireCredit}
-          onOpenChange={(open) => !open && setSelectedRetireCredit(null)}
+          isOpen={!!selectedRetireCredit}
+          onClose={() => setSelectedRetireCredit(null)}
         />
       )}
 
-      <WalletModal open={isWalletModalOpen} onOpenChange={setIsWalletModalOpen} />
+      <WalletModal isOpen={isWalletModalOpen} onClose={() => setIsWalletModalOpen(false)} />
     </div>
   );
 }
