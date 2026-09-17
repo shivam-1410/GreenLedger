@@ -61,9 +61,13 @@ Based on direct feedback collected from our onboarded users, the following major
 
 ## 📸 Application Screenshots & Visual Proofs
 
-| 1. Product UI & Dashboard | 2. Carbon Credit Marketplace | 3. On-Chain XLM Transaction Flow |
-| :---: | :---: | :---: |
-| ![Dashboard & Wallet Overview](public/screenshots/screenshot-1.png) | ![Carbon Credit Marketplace](public/screenshots/screenshot-2.png) | ![On-Chain XLM Transaction Flow](public/screenshots/screenshot-3.png) |
+| 1. Wallet Connected State | 2. Balance Displayed |
+| :---: | :---: |
+| ![Wallet Connected State](public/screenshots/screenshot-wallet-connected.png) | ![Balance Displayed](public/screenshots/screenshot-balance-displayed.png) |
+
+| 3. Successful Testnet Transaction | 4. Transaction Result Shown to User |
+| :---: | :---: |
+| ![Successful Testnet Transaction](public/screenshots/screenshot-successful-transaction.png) | ![Transaction Result Shown to User](public/screenshots/screenshot-transaction-result.png) |
 
 ---
 
